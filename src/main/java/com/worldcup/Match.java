@@ -14,6 +14,10 @@ public class Match {
     public int haftTime; // hiệp 1
     public boolean injuryTime; // bù giờ
     public boolean extraTime = false; // hiệp phụ
+    public int totalDuration;   // tổng thời gian
+    public int secondHalfDuration;      // hiệp 2
+    public int halfTimeBreak;       // thời gian nghỉ giữa hiệp
+
 
     public Match(Team teamA, Team teamB) {
         this.teamA = teamA;
@@ -21,6 +25,10 @@ public class Match {
         this.id = UUID.randomUUID();
         this.scoreTeamA = 0;
         this.scoreTeamB = 0;
+        this.haftTime = 45; // 45 phút cho hiệp đầu
+        this.secondHalfDuration = 45; // 45 phút cho hiệp hai
+        this.halfTimeBreak = 15; // 15 phút nghỉ giải lao
+        this.totalDuration = haftTime + secondHalfDuration + halfTimeBreak; // Tổng thời gian 90 phút
     }
 
     public void play() {
@@ -32,7 +40,7 @@ public class Match {
             teamB.addPoints(3);
             winner = teamB;
         }
-        teamA.incrementMatchesPlayed(); // incrementMatchesPlayed() để tăng số trận đã chơi của teamA teamBlên 1.
+        teamA.incrementMatchesPlayed(); // incrementMatchesPlayed() để tăng số trận đã chơi của teamA teamB lên 1.
         teamB.incrementMatchesPlayed();
     }
 
@@ -79,9 +87,31 @@ public class Match {
         return haftTime1;
     }
 
-    
     public boolean injuryTime() {
         boolean injuryTime = true;
         return injuryTime;
     }
+
+    public int getFirstHalfDuration() {
+        return 45; // 45 phút cho hiệp đầu
+    }
+
+    public int getSecondHalfDuration() {
+        return 45; // 45 phút cho hiệp hai
+    }
+
+    public int getHalfTimeBreakDuration() {
+        return halfTimeBreak; // 15 phút nghỉ giải lao
+    }
+
+    public int getTotalDuration() {
+        return totalDuration; // Tổng thời gian 90 phút
+    }
+
+    public String playMatch() { // Mô phỏng trận đấu
+        return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration + " phút.";
+    }
+
+    
+    
 }
