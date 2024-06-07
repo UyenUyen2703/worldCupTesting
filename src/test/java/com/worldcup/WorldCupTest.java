@@ -16,13 +16,9 @@ public class WorldCupTest {
     public Match match;
     public Card card;
     public Player player;
-<<<<<<< HEAD
     public Team teamA;
     public Team teamB;  
 
-
-=======
->>>>>>> b804d7f9075deed06151d90aa982a2b44a488eff
 
     @Before
     public void setUp() {
