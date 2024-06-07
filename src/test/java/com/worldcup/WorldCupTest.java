@@ -18,7 +18,7 @@ public class WorldCupTest {
     public Card card;
     public Player player;
     public Team teamA;
-    public Team teamB;
+    public Team teamB;  
 
 
 
@@ -26,6 +26,8 @@ public class WorldCupTest {
     public void setUp() {
         worldCup = new WorldCup();
         worldCup.initializeTeams();
+        worldCup.playGroupStage();
+        worldCup.advanceToKnockoutStage();
         region = new Region();
         match = new Match(null, null);  
         region.addTeamsInAsia();
@@ -1071,7 +1073,39 @@ public class WorldCupTest {
         assertEquals(9, team32.getPoints());
     }
 
-    // 90
+    // 90 // Kiểm tra số lượng đội vào vòng 1/16
+    @Test
+    public void testNumberOfTeamsInKnockoutStage() {
+        List<Team> knockoutStageTeams = worldCup.getKnockoutStageTeams();
+        assertEquals("The number of teams in the knockout stage should be 16.",16, knockoutStageTeams.size());
+    }
+
+    // 91 // Kiểm tra số lượng đội vào vòng 1/8
+    @Test
+    public void testQuarterFinals() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        assertEquals(4, quarterFinalWinners.size());
+    }
+
+    // 92 // Kiểm tra số lượng đội vào bán kết
+    @Test
+    public void testSemiFinals() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        assertEquals(2, semiFinalWinners.size());
+    }
+
+    // 93 // Kiểm tra số lượng đội vào chung kết
+    @Test
+    public void testFinal() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        worldCup.playFinal(semiFinalWinners);
+        assertEquals(1, semiFinalWinners.size());
+        assertEquals(worldCup.getChampion(), semiFinalWinners.get(0));
+    }
+
+
     // 91
     // 92
     // 93
