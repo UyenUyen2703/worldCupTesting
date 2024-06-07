@@ -3,6 +3,8 @@ package com.worldcup;
 public class Player {
     public String name;
     public boolean ejected;
+    public String position;
+
 
     public Player(String name) {
         this.name = name;
