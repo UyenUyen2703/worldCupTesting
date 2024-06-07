@@ -108,7 +108,20 @@ public class Match {
         return totalDuration; // Tổng thời gian 90 phút
     }
 
-    public String playMatch() { // Mô phỏng trận đấu
+    public void playMatch() {
+        if (scoreTeamA > scoreTeamB) {
+            teamA.addPoints(3);
+        } else if (scoreTeamB > scoreTeamA) {
+            teamB.addPoints(3);
+        } else {
+            teamA.addPoints(1);
+            teamB.addPoints(1);
+        }
+        teamA.updateGoalDifference(scoreTeamA - scoreTeamB);
+        teamB.updateGoalDifference(scoreTeamB - scoreTeamA);
+    }
+
+    public String playMatchReturn() { // Mô phỏng trận đấu
         return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration + " phút.";
     }
 }

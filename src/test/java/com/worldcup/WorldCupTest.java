@@ -804,7 +804,7 @@ public class WorldCupTest {
     @Test
     public void testPlayMatch() {
         String expectedMessage = "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.";
-        assertEquals(expectedMessage, match.playMatch(), "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.");
+        assertEquals(expectedMessage, match.playMatchReturn(), "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.");
     }
 
     // 58 // Kiểm tra điểm của đội 1
@@ -1068,6 +1068,7 @@ public class WorldCupTest {
     // 92
     // 93
     // 94
+
     // 95
     // 96
     // 97
