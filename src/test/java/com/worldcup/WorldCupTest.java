@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.MatchResult;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -17,26 +16,19 @@ public class WorldCupTest {
     public Match match;
     public Card card;
     public Player player;
-    public Team teamA;
-    public Team teamB;
-
-
 
     @Before
     public void setUp() {
         worldCup = new WorldCup();
         worldCup.initializeTeams();
         region = new Region();
-        match = new Match(null, null);  
+        match = new Match(null, null);
         region.addTeamsInAsia();
         region.addTeamsInAfrica();
         region.addTeamsInEurope();
         region.addTeamsInNorthCentralAmericaAndCaribbean();
         region.addTeamsInOceania();
         region.addTeamsInSouthAmerica();
-        teamA = new Team("Team A", "Coach A");
-        teamB = new Team("Team B", "Coach B");
-        match = new Match(teamA, teamB);
 
     }
 
