@@ -55,6 +55,42 @@ public class WorldCup {
         }
     }
 
+    // Chơi tứ kết
+    public List<Team> playQuarterFinals() {
+        List<Team> quarterFinalWinners = new ArrayList<>();
+        for (int i = 0; i < 8; i += 2) {
+            Match match = new Match(knockoutStageTeams.get(i), knockoutStageTeams.get(i + 1));
+            match.play();
+            quarterFinalWinners.add(match.getWinner());
+        }
+        return quarterFinalWinners;
+    }
+
+    // Chơi bán kết
+    public List<Team> playSemiFinals(List<Team> quarterFinalWinners) {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        // Trận S1: Thắng trận Q1 – Thắng trận Q2
+        Match semiFinal1 = new Match(quarterFinalWinners.get(0), quarterFinalWinners.get(1));
+        semiFinal1.play();
+        semiFinalWinners.add(semiFinal1.getWinner());
+
+        // Trận S2: Thắng trận Q3 – Thắng trận Q4
+        Match semiFinal2 = new Match(quarterFinalWinners.get(2), quarterFinalWinners.get(3));
+        semiFinal2.play();
+        semiFinalWinners.add(semiFinal2.getWinner());
+
+        return semiFinalWinners;
+    }
+
+    // Choi chung ket
+    public void playFinal(List<Team> semiFinalWinners) {
+        // Trận chung kết: Thắng S1 – Thắng S2
+        finalMatch = new Match(semiFinalWinners.get(0), semiFinalWinners.get(1));
+        finalMatch.play();
+        champion = finalMatch.getWinner();
+    }
+
+
     public void playKnockoutStage() {
         // Mô phỏng các trận đấu vòng loại trực tiếp
         List<Team> currentStageTeams = new ArrayList<>(knockoutStageTeams);
