@@ -21,7 +21,7 @@ public class Region {
         this.southAmerica = new ArrayList<>();
         this.oceania = new ArrayList<>();
         this.europe = new ArrayList<>();
-        this.hostTeam = new Team("Quatar - Host Tean", "Coach of Host Team");
+        this.hostTeam = new Team("Quatar - Host Team", "Coach of Host Team");
     }
 
     public ArrayList<Team> getAsia() {
@@ -142,7 +142,8 @@ public class Region {
 
     public Team playAsiaVsNorthCentralAmericaPlayoff() {
         Team asiaTeam = asia.get(5); // 6th team in Asia (index 5)
-        Team northCentralAmericaTeam = northCentralAmericaAndCaribbean.get(3); // 4th team in North Central America (index 3)
+        Team northCentralAmericaTeam = northCentralAmericaAndCaribbean.get(3); // 4th team in North Central America
+                                                                               // (index 3)
 
         // Play two matches
         Match match1 = new Match(asiaTeam, northCentralAmericaTeam);
@@ -162,7 +163,8 @@ public class Region {
             winner = northCentralAmericaTeam;
             asia.remove(asiaTeam);
         } else {
-            // In case of a tie, choose the winner randomly or use other rules like away goals
+            // In case of a tie, choose the winner randomly or use other rules like away
+            // goals
             winner = Math.random() > 0.5 ? asiaTeam : northCentralAmericaTeam;
             if (winner == asiaTeam) {
                 northCentralAmericaAndCaribbean.remove(northCentralAmericaTeam);
@@ -195,7 +197,8 @@ public class Region {
             winner = oceaniaTeam;
             southAmerica.remove(southAmericaTeam);
         } else {
-            // In case of a tie, choose the winner randomly or use other rules like away goals
+            // In case of a tie, choose the winner randomly or use other rules like away
+            // goals
             winner = Math.random() > 0.5 ? southAmericaTeam : oceaniaTeam;
             if (winner == southAmericaTeam) {
                 oceania.remove(oceaniaTeam);

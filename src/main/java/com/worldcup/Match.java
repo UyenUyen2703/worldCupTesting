@@ -111,7 +111,4 @@ public class Match {
     public String playMatch() { // Mô phỏng trận đấu
         return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration + " phút.";
     }
-
-    
-    
 }
