@@ -87,6 +87,16 @@ public class Team {
         // Điểm không thay đổi nếu thua
     }
 
+    public Group getSupportCoach() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getSupportCoach'");
+    }
+
+    public List<Team> getPlayers() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getPlayers'");
+    }
+
     
 
 }

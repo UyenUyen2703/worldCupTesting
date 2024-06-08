@@ -124,4 +124,54 @@ public class Match {
     public String playMatchReturn() { // Mô phỏng trận đấu
         return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration + " phút.";
     }
+
+    public void addCard(Card redCard) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'addCard'");
+    }
+
+    public boolean isOvertimePlayed() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isOvertimePlayed'");
+    }
+
+    public int getTeamAGoals() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTeamAGoals'");
+    }
+
+    public int getTeamBGoals() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getTeamBGoals'");
+    }
+
+    public boolean isPenaltyShootout() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'isPenaltyShootout'");
+    }
+
+    public int getHalfTimeBreak() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getHalfTimeBreak'");
+    }
+
+    public void setScore1(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setScore1'");
+    }
+
+    public void setScore2(int i) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'setScore2'");
+    }
+
+    public boolean hasInjuryTime() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'hasInjuryTime'");
+    }
+
+    public boolean hasExtraTime() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'hasExtraTime'");
+    }
 }

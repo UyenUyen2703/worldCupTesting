@@ -17,8 +17,7 @@ public class WorldCupTest {
     public Card card;
     public Player player;
     public Team teamA;
-    public Team teamB;  
-
+    public Team teamB;
 
     @Before
     public void setUp() {
@@ -654,15 +653,15 @@ public class WorldCupTest {
         assertEquals(expected, actual);
     }
 
-    //44 // Giả sử đội thứ nhất thắng 1 trận cộng đúng 3 điểm
+    // 44 // Giả sử đội thứ nhất thắng 1 trận cộng đúng 3 điểm
     @Test
-    public void testTeamWin() { 
+    public void testTeamWin() {
         Team team = worldCup.getTeams().get(0); // Lấy đội thứ nhất
         team.addPointsForWin(); // Thắng 1 trận
         assertEquals(3, team.getPoints());
     }
 
-    //45 // Giả sử đội thứ nhất hòa 1 trận cộng đúng 1 điểm
+    // 45 // Giả sử đội thứ nhất hòa 1 trận cộng đúng 1 điểm
     @Test
     public void testTeamDraw() {
         Team team = worldCup.getTeams().get(0); // Lấy đội thứ nhất
@@ -670,7 +669,7 @@ public class WorldCupTest {
         assertEquals(1, team.getPoints());
     }
 
-    //46 // Giả sử đội thứ nhất thua 1 trận không cộng điểm
+    // 46 // Giả sử đội thứ nhất thua 1 trận không cộng điểm
     @Test
     public void testTeamLoss() {
         Team team = worldCup.getTeams().get(0); // Lấy đội thứ nhất
@@ -683,7 +682,7 @@ public class WorldCupTest {
     public void testTeamPoints() {
         // Tạo đội và thiết lập điểm ban đầu là 0
         Team team = new Team("Team A", "Coach A");
-        assertEquals( "Điểm ban đầu của đội phải là 0",0, team.getPoints());
+        assertEquals("Điểm ban đầu của đội phải là 0", 0, team.getPoints());
 
         // Giả sử đội đá 3 trận và thắng 1, thua 2
         team.updatePoints(3); // Thắng trận đầu tiên
@@ -691,7 +690,7 @@ public class WorldCupTest {
         team.updatePoints(0); // Thua trận thứ ba
 
         // Điểm cuối cùng sẽ là 3 điểm từ trận thắng
-        assertEquals("Điểm cuối cùng của đội phải là 3",3, team.getPoints());
+        assertEquals("Điểm cuối cùng của đội phải là 3", 3, team.getPoints());
     }
 
     // 48 // Kiểm tra một đội đá 3 trận và thắng 2, thua 1
@@ -699,7 +698,7 @@ public class WorldCupTest {
     public void testTeamPointsAfterThreeMatch() {
         // Tạo đội và thiết lập điểm ban đầu là 0
         Team team = new Team("Team A", "Coach A");
-        assertEquals( "Điểm ban đầu của đội phải là 0",0, team.getPoints());
+        assertEquals("Điểm ban đầu của đội phải là 0", 0, team.getPoints());
 
         // Giả sử đội đá 3 trận và thắng 2, thua 1
         team.updatePoints(3); // Thắng trận đầu tiên
@@ -707,7 +706,7 @@ public class WorldCupTest {
         team.updatePoints(0); // Thua trận thứ ba
 
         // Điểm cuối cùng sẽ là 6 điểm từ trận thắng
-        assertEquals("Điểm cuối cùng của đội phải là 6",6, team.getPoints());
+        assertEquals("Điểm cuối cùng của đội phải là 6", 6, team.getPoints());
     }
 
     // 49 // Kiểm tra một đội đá 3 trận và thắng 1 thua 1 hòa 1
@@ -715,7 +714,7 @@ public class WorldCupTest {
     public void testTeamPointsAfterThreeMatch2() {
         // Tạo đội và thiết lập điểm ban đầu là 0
         Team team = new Team("Team A", "Coach A");
-        assertEquals( "Điểm ban đầu của đội phải là 0",0, team.getPoints());
+        assertEquals("Điểm ban đầu của đội phải là 0", 0, team.getPoints());
 
         // Giả sử đội đá 3 trận và thắng 1, thua 1, hòa 1
         team.updatePoints(3); // Thắng trận đầu tiên
@@ -723,7 +722,7 @@ public class WorldCupTest {
         team.updatePoints(1); // Hòa trận thứ ba
 
         // Điểm cuối cùng sẽ là 4 điểm từ trận thắng và hòa
-        assertEquals("Điểm cuối cùng của đội phải là 4",4, team.getPoints());
+        assertEquals("Điểm cuối cùng của đội phải là 4", 4, team.getPoints());
     }
 
     // 50 // Kiểm tra một đội đá 3 trận thắng 3 trận cộng đúng 9 điểm
@@ -734,7 +733,7 @@ public class WorldCupTest {
                 team.addPoints(3 * 3); // Thắng 3 trận, mỗi trận 3 điểm
             }
         }
-    
+
         // Kiểm tra điểm của từng đội
         for (Group group : worldCup.getGroups()) {
             for (Team team : group.getTeams()) {
@@ -757,7 +756,7 @@ public class WorldCupTest {
         // Kiểm tra điểm của từng đội
         for (Group group : worldCup.getGroups()) {
             for (Team team : group.getTeams()) {
-                assertEquals( "Điểm của đội " + team.getName() + " đúng",3, team.getPoints());
+                assertEquals("Điểm của đội " + team.getName() + " đúng", 3, team.getPoints());
             }
         }
     }
@@ -776,7 +775,7 @@ public class WorldCupTest {
         // Kiểm tra điểm của từng đội
         for (Group group : worldCup.getGroups()) {
             for (Team team : group.getTeams()) {
-                assertEquals( "Điểm của đội " + team.getName() + " đúng",0, team.getPoints());
+                assertEquals("Điểm của đội " + team.getName() + " đúng", 0, team.getPoints());
             }
         }
     }
@@ -784,32 +783,33 @@ public class WorldCupTest {
     // 53 // Kiểm tra thời gian của hiệp đầu
     @Test
     public void testFirstHalfDuration() {
-        assertEquals("Thời gian của hiệp đầu không đúng",45, match.getFirstHalfDuration());
+        assertEquals("Thời gian của hiệp đầu không đúng", 45, match.getFirstHalfDuration());
     }
 
     // 54 // Kiểm tra thời gian của hiệp hai
     @Test
     public void testSecondHalfDuration() {
-        assertEquals("Thời gian của hiệp hai không đúng",45, match.getSecondHalfDuration());
+        assertEquals("Thời gian của hiệp hai không đúng", 45, match.getSecondHalfDuration());
     }
 
     // 55 // Kiểm tra thời gian nghỉ giữa hai hiệp
     @Test
     public void testHalfTimeBreak() {
-        assertEquals("Thời gian nghỉ giữa hai hiệp không đúng",15, match.getHalfTimeBreakDuration());
+        assertEquals("Thời gian nghỉ giữa hai hiệp không đúng", 15, match.getHalfTimeBreakDuration());
     }
 
     // 56 // Kiểm tra tổng thời gian của trận đấu
     @Test
     public void testTotalDuration() {
-        assertEquals("Tổng thời gian của trận đấu không đúng",105, match.getTotalDuration());
+        assertEquals("Tổng thời gian của trận đấu không đúng", 105, match.getTotalDuration());
     }
 
     // 57 // Kiểm tra thông báo của trận đấu
     @Test
     public void testPlayMatch() {
         String expectedMessage = "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.";
-        assertEquals(expectedMessage, match.playMatchReturn(), "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.");
+        assertEquals(expectedMessage, match.playMatchReturn(),
+                "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.");
     }
 
     // 58 // Kiểm tra điểm của đội 1
@@ -1072,7 +1072,7 @@ public class WorldCupTest {
     @Test
     public void testNumberOfTeamsInKnockoutStage() {
         List<Team> knockoutStageTeams = worldCup.getKnockoutStageTeams();
-        assertEquals("The number of teams in the knockout stage should be 16.",16, knockoutStageTeams.size());
+        assertEquals("The number of teams in the knockout stage should be 16.", 16, knockoutStageTeams.size());
     }
 
     // 91 // Kiểm tra số lượng đội vào vòng 1/8
@@ -1093,23 +1093,489 @@ public class WorldCupTest {
     // 93 // Kiểm tra số lượng đội vào chung kết
     // @Test
     // public void testFinal() {
-    //     List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
-    //     List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
-    //     worldCup.playFinal(semiFinalWinners);
-    //     assertEquals(2, semiFinalWinners.size());
-    //     assertEquals(worldCup.getChampion(), semiFinalWinners.get(0));
+    // List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+    // List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+    // worldCup.playFinal(semiFinalWinners);
+    // assertEquals(2, semiFinalWinners.size());
+    // assertEquals(worldCup.getChampion(), semiFinalWinners.get(0));
     // }
 
+    // Chuyên (Vòng chung kết)
+    // 91 Test khi có một đội thắng trong trận chung kết:
+    @Test
+    public void testPlayFinalOneWinner() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        worldCup.playFinal(semiFinalWinners);
+        Team champion = worldCup.getChampion();
+        assertNotNull(champion);
+        assertTrue(semiFinalWinners.contains(champion));
+    }
 
-    // 91
-    // 92
-    // 93
-    // 94
+    // 92 Test khi có trận chung kết hòa và phải chơi thêm hiệp phụ:
+    @Test
+    public void testPlayFinalDrawWithExtraTime() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        // Kết quả hòa sau 90 phút
+        Match match = new Match(semiFinalWinners.get(0), semiFinalWinners.get(1));
+        match.setDraw(true);
+        match.play();
+        // Chơi hiệp phụ
+        match.playExtraTime();
+        worldCup.playFinal(semiFinalWinners);
+        Team champion = worldCup.getChampion();
+        assertNotNull(champion);
+        assertTrue(semiFinalWinners.contains(champion));
+    }
 
-    // 95
-    // 96
-    // 97
-    // 98
-    // 99
-    // 100
+    // 93 Test khi có trận chung kết hòa và phải chơi loạt đá penalty:
+    @Test
+    public void testPlayFinalDrawWithPenaltyShootout() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        // Kết quả hòa sau 90 phút
+        Match match = new Match(semiFinalWinners.get(0), semiFinalWinners.get(1));
+        match.setDraw(true);
+        match.play();
+        // Chơi loạt đá penalty
+        match.playPenaltyShootout();
+        worldCup.playFinal(semiFinalWinners);
+        Team champion = worldCup.getChampion();
+        assertNotNull(champion);
+        assertTrue(semiFinalWinners.contains(champion));
+    }
+
+    // 94 Test cho trường hợp giải đấu với số lượng đội là 8:
+    @Test
+    public void testPlayFinalWithEightTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        semiFinalWinners.add(new Team("Team E", "Coach E"));
+        semiFinalWinners.add(new Team("Team F", "Coach F"));
+        semiFinalWinners.add(new Team("Team G", "Coach G"));
+        semiFinalWinners.add(new Team("Team H", "Coach H"));
+        // Danh sách đội tham gia vòng chung kết có đúng 8 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 95 Test cho trường hợp giành chiến thắng trong trận chung kết:
+    @Test
+    public void testPlayFinalWithWinner() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        // Danh sách đội tham gia vòng chung kết có đúng 2 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 96 Test cho trường hợp giải đấu với số lượng đội là 2:
+    @Test
+    public void testPlayFinalWithTwoTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        // Danh sách đội tham gia vòng chung kết có đúng 2 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 97 Test cho trường hợp giải đấu với số lượng đội là 4:
+    @Test
+    public void testPlayFinalWithFourTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        // Danh sách đội tham gia vòng chung kết có đúng 4 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 98 Test cho trường hợp giải đấu với số lượng đội là 16:
+    @Test
+    public void testPlayFinalWithSixteenTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        semiFinalWinners.add(new Team("Team E", "Coach E"));
+        semiFinalWinners.add(new Team("Team F", "Coach F"));
+        semiFinalWinners.add(new Team("Team G", "Coach G"));
+        semiFinalWinners.add(new Team("Team H", "Coach H"));
+        semiFinalWinners.add(new Team("Team I", "Coach I"));
+        semiFinalWinners.add(new Team("Team J", "Coach J"));
+        semiFinalWinners.add(new Team("Team K", "Coach K"));
+        semiFinalWinners.add(new Team("Team L", "Coach L"));
+        semiFinalWinners.add(new Team("Team M", "Coach M"));
+        semiFinalWinners.add(new Team("Team N", "Coach N"));
+        semiFinalWinners.add(new Team("Team O", "Coach O"));
+        semiFinalWinners.add(new Team("Team P", "Coach P"));
+        // Danh sách đội tham gia vòng chung kết có đúng 16 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 99 Test cho trường hợp giải đấu với số lượng đội lớn hơn 16:
+    @Test
+    public void testPlayFinalWithMoreThanSixteenTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        // Tạo danh sách 17 đội
+        for (int i = 0; i < 17; i++) {
+            semiFinalWinners.add(new Team("Team " + (i + 1), "Coach " + (i + 1)));
+        }
+        // Danh sách đội tham gia vòng chung kết có 17 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 100 Test cho trường hợp giải đấu với số lượng đội là 3:
+    @Test
+    public void testPlayFinalWithThreeTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        // Danh sách đội tham gia vòng chung kết có 3 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 101 Test cho trường hợp giải đấu với số lượng đội là 5:
+    @Test
+    public void testPlayFinalWithFiveTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        semiFinalWinners.add(new Team("Team E", "Coach E"));
+        // Danh sách đội tham gia vòng chung kết có 5 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 102 Test cho trường hợp giải đấu với số lượng đội là 6:
+    @Test
+    public void testPlayFinalWithSixTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        semiFinalWinners.add(new Team("Team E", "Coach E"));
+        semiFinalWinners.add(new Team("Team F", "Coach F"));
+        // Danh sách đội tham gia vòng chung kết có 6 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 103Test cho trường hợp giải đấu với số lượng đội là 7:
+    @Test
+    public void testPlayFinalWithSevenTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        semiFinalWinners.add(new Team("Team E", "Coach E"));
+        semiFinalWinners.add(new Team("Team F", "Coach F"));
+        semiFinalWinners.add(new Team("Team G", "Coach G"));
+        // Danh sách đội tham gia vòng chung kết có 7 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 104 Test cho trường hợp giải đấu với số lượng đội là 9:
+    @Test
+    public void testPlayFinalWithNineTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        semiFinalWinners.add(new Team("Team E", "Coach E"));
+        semiFinalWinners.add(new Team("Team F", "Coach F"));
+        semiFinalWinners.add(new Team("Team G", "Coach G"));
+        semiFinalWinners.add(new Team("Team H", "Coach H"));
+        semiFinalWinners.add(new Team("Team I", "Coach I"));
+        // Danh sách đội tham gia vòng chung kết có 9 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 105 Test cho trường hợp giải đấu với số lượng đội là 10:
+    @Test
+    public void testPlayFinalWithTenTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        semiFinalWinners.add(new Team("Team E", "Coach E"));
+        semiFinalWinners.add(new Team("Team F", "Coach F"));
+        semiFinalWinners.add(new Team("Team G", "Coach G"));
+        semiFinalWinners.add(new Team("Team H", "Coach H"));
+        semiFinalWinners.add(new Team("Team I", "Coach I"));
+        semiFinalWinners.add(new Team("Team J", "Coach J"));
+        // Danh sách đội tham gia vòng chung kết có 10 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 106 Test cho trường hợp giải đấu với số lượng đội là 15:
+    @Test
+    public void testPlayFinalWithFifteenTeams() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        semiFinalWinners.add(new Team("Team C", "Coach C"));
+        semiFinalWinners.add(new Team("Team D", "Coach D"));
+        semiFinalWinners.add(new Team("Team E", "Coach E"));
+        semiFinalWinners.add(new Team("Team F", "Coach F"));
+        semiFinalWinners.add(new Team("Team G", "Coach G"));
+        semiFinalWinners.add(new Team("Team H", "Coach H"));
+        semiFinalWinners.add(new Team("Team I", "Coach I"));
+        semiFinalWinners.add(new Team("Team J", "Coach J"));
+        semiFinalWinners.add(new Team("Team K", "Coach K"));
+        semiFinalWinners.add(new Team("Team L", "Coach L"));
+        semiFinalWinners.add(new Team("Team M", "Coach M"));
+        semiFinalWinners.add(new Team("Team N", "Coach N"));
+        // Danh sách đội tham gia vòng chung kết có 15 đội
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 107 Test khi có lỗi xảy ra trong trận chung kết:
+    @Test
+    public void testPlayFinalWithException() {
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(new Team("Team A", "Coach A"));
+        semiFinalWinners.add(new Team("Team B", "Coach B"));
+        // Khi có lỗi xảy ra trong trận chung kết
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 108
+    @Test
+    public void testFinalWithTwoTeamsAndSimulateMatch() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(teamA);
+        semiFinalWinners.add(teamB);
+        worldCup.playFinal(semiFinalWinners);
+        assertTrue(teamA.getPoints() > 0 || teamB.getPoints() > 0);
+    }
+
+    // 109
+    @Test
+    public void testFinalWithWinnerTeamA() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        Match finalMatch = new Match(teamA, teamB);
+        finalMatch.play();
+        worldCup.champion = finalMatch.getWinner();
+        assertEquals("Team A", worldCup.getChampion().getName());
+    }
+
+    // 110
+    @Test
+    public void testFinalWithWinnerTeamB() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        Match finalMatch = new Match(teamA, teamB);
+        finalMatch.play();
+        worldCup.champion = finalMatch.getWinner();
+        assertEquals("Team B", worldCup.getChampion().getName());
+    }
+
+    // 111
+    @Test
+    public void testFinalMatchDuration() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        Match finalMatch = new Match(teamA, teamB);
+        finalMatch.play();
+        assertEquals(45, finalMatch.getFirstHalfDuration());
+    }
+
+    // 112
+    @Test
+    public void testFinalWithTwoTeams() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        List<Team> semiFinalWinners = new ArrayList<>();
+        semiFinalWinners.add(teamA);
+        semiFinalWinners.add(teamB);
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 113
+    @Test
+    public void testFinalMatchScoreNonNegative() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        Match finalMatch = new Match(teamA, teamB);
+        finalMatch.play();
+        assertTrue(finalMatch.getScore1() >= 0 && finalMatch.getScore2() >= 0);
+    }
+
+    // 114
+    @Test
+    public void testFinalMatchResultWithExtraTime() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        Match finalMatch = new Match(teamA, teamB);
+        finalMatch.playExtraTime();
+        assertNotNull(finalMatch.getWinner());
+    }
+
+    // 115
+    @Test
+    public void testFinalMatchResultWithPenaltyShootout() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        Match finalMatch = new Match(teamA, teamB);
+        finalMatch.playPenaltyShootout();
+        assertNotNull(finalMatch.getWinner());
+    }
+
+    // 116
+    @Test
+    public void testFinalMatchResultWithoutGoals() {
+        Team teamA = new Team("Team A", "Coach A");
+        Team teamB = new Team("Team B", "Coach B");
+        Match finalMatch = new Match(teamA, teamB);
+        finalMatch.play();
+        assertEquals("Team A wins", finalMatch.getResult());
+    }
+
+    // 117
+    @Test
+    public void testChampion() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 118
+    @Test
+    public void testKnockoutStageTeams() {
+        assertNotNull(worldCup.getKnockoutStageTeams());
+    }
+
+    // 119
+    @Test
+    public void testAdvanceToKnockoutStage() {
+        worldCup.advanceToKnockoutStage();
+        assertEquals(32, worldCup.getKnockoutStageTeams().size());
+    }
+
+    // 120
+    @Test
+    public void testPlaySemiFinalsReturnsWinners() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        assertNotNull(semiFinalWinners);
+    }
+
+    // 121
+    @Test
+    public void testPlayFinalReturnsChampion() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 122
+    @Test
+    public void testPlayKnockoutStageDeterminesChampion() {
+        worldCup.playKnockoutStage();
+        assertNotNull(worldCup.getChampion());
+    }
+
+    // 123
+    @Test
+    public void testChampionInKnockoutStage() {
+        worldCup.playKnockoutStage();
+        assertTrue(worldCup.getKnockoutStageTeams().contains(worldCup.getChampion()));
+    }
+
+    // 124
+    @Test
+    public void testFinalMatchHasWinner() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getFinalMatch().getWinner());
+    }
+
+    // 125
+    @Test
+    public void testFinalMatchResult() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        worldCup.playFinal(semiFinalWinners);
+        assertNotNull(worldCup.getFinalMatch().getResult());
+    }
+
+    // 126
+    @Test
+    public void testFinalMatchScore() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        worldCup.playFinal(semiFinalWinners);
+        assertTrue(worldCup.getFinalMatch().getScore1() >= 0);
+        assertTrue(worldCup.getFinalMatch().getScore2() >= 0);
+    }
+
+    // 127
+    @Test
+    public void testFinalMatchHasDuration() {
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        worldCup.playFinal(semiFinalWinners);
+        assertTrue(worldCup.getFinalMatch().getTotalDuration() > 0);
+    }
+
+    // 128
+    @Test
+    public void testKnockoutStageTeamsNotNull() {
+        assertNotNull(worldCup.getKnockoutStageTeams());
+    }
+
+    // 129
+    @Test
+    public void testPlayKnockoutStage() {
+        worldCup.playKnockoutStage();
+        assertTrue(worldCup.getKnockoutStageTeams().size() > 0);
+    }
+
+    // 130
+    @Test
+    public void testChampionNotNull() {
+        assertNull(worldCup.getChampion());
+    }
+
+    // 131
+    @Test
+    public void testFinalMatchNotNull() {
+        assertNull(worldCup.getFinalMatch());
+    }
+
 }
