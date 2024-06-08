@@ -989,7 +989,7 @@ public class WorldCupTest {
     @Test
     public void testNumberOfTeamsInKnockoutStage() {
         List<Team> knockoutStageTeams = worldCup.getKnockoutStageTeams();
-        assertEquals("The number of teams in the knockout stage should be 16.", 16, knockoutStageTeams.size());
+        assertEquals(16, knockoutStageTeams.size());
     }
 
     // 91 // Kiểm tra số lượng đội vào vòng 1/8
@@ -1330,7 +1330,8 @@ public class WorldCupTest {
         assertEquals(8, playedMatchesCount);
     }
 
-    // 120 //Kiểm tra xem kết quả của từng trận đấu đã được cập nhật đúng trong danh sách đội
+    // 120 //Kiểm tra xem kết quả của từng trận đấu đã được cập nhật đúng trong danh
+    // sách đội
     @Test
     public void testRoundOf16TeamResultsUpdate() {
         worldCup.playRoundOf16();
@@ -1416,7 +1417,7 @@ public class WorldCupTest {
         Match match = new Match(teamA, teamB);
         match.setScore(2, 3);
         match.play();
-        assertEquals(teamA,match.getWinner());
+        assertEquals(teamA, match.getWinner());
     }
 
     // 128
@@ -1427,7 +1428,7 @@ public class WorldCupTest {
         Match match = new Match(teamA, teamB);
         match.setScore(1, 3);
         match.play();
-        assertEquals(teamB,match.getWinner());
+        assertEquals(teamB, match.getWinner());
     }
 
     // 129
@@ -1438,7 +1439,7 @@ public class WorldCupTest {
         Match match = new Match(teamA, teamB);
         match.setScore(2, 1);
         match.play();
-        assertEquals(teamA,match.getWinner());
+        assertEquals(teamA, match.getWinner());
     }
     // 130
 
