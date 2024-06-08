@@ -10,16 +10,14 @@ public class Team {
     public int matchesPlayed;
     public String coach;
     public int supportCoach;
-    public int goalDifference;
 
     public Team(String name, String coach) {
         this.name = name;
         this.players = new ArrayList<>();
         this.points = 0; // 9
-        this.matchesPlayed = 0; // 3
+        this.matchesPlayed = 3; // 3
         this.coach = coach;
         this.supportCoach = 0;
-        this.goalDifference = 0;
     }
 
     public String getCoach() {
@@ -53,9 +51,7 @@ public class Team {
     public void addSupportCoach(Team supportCoach) {
         supportCoach.addSupportCoach(supportCoach);
     }
-    public void updateGoalDifference(int difference) { //Hiệu số bàn thắng bại
-        this.goalDifference += difference;
-    }
+
     public boolean hasForfeited() { // số lượng cầu thủ không đc dưới 7
         return players.stream().filter(p -> !p.isEjected()).count() < 7; // filter(p -> !p.isEjected()).count() < 7;: để
                                                                          // lọc ra những cầu thủ chưa bị đuổi khỏi sân.
@@ -65,7 +61,7 @@ public class Team {
     }
 
     public void addPointsForWin() {
-        points += 3;
+        this.points += 3;
     }
 
     public void addPointsForDraw() {
@@ -74,6 +70,7 @@ public class Team {
 
     public void addPointsForLoss() {
         // Không cần thêm điểm nếu thua
+        points += 0;
     }
 
     // Phương thức cập nhật điểm số của đội sau mỗi trận đấu
@@ -86,7 +83,4 @@ public class Team {
         }
         // Điểm không thay đổi nếu thua
     }
-
-    
-
 }
