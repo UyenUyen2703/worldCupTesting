@@ -22,11 +22,11 @@ public class WorldCup {
         for (int i = 0; i < 32; i++) {
             teams.add(new Team("Team " + (i + 1), "Coach" + (i + 1)));
         }
-        // Chia đội thành 8 bảng
-        for (int i = 0; i < 8; i++) {
-            groups.add(new Group("Group " + (char) ('A' + i), teams.subList(i * 4, (i + 1) * 4)));
-            Group.numTeamsOfGroup++;
-        }
+        // // Chia đội thành 8 bảng
+        // for (int i = 0; i < 8; i++) {
+        //     groups.add(new Group("Group " + (char) ('A' + i), teams.subList(i * 4, (i + 1) * 4)));
+        //     Group.numTeamsOfGroup++;
+        // }
     }
 
     public List<Team> getTeams() {
@@ -89,7 +89,6 @@ public class WorldCup {
         finalMatch.play();
         champion = finalMatch.getWinner();
     }
-
 
     public void playKnockoutStage() {
         // Mô phỏng các trận đấu vòng loại trực tiếp
@@ -157,8 +156,10 @@ public class WorldCup {
         for (Group group : groups) {
             System.out.println(group.getName() + ":");
             group.printTeamsinGroup();
+            wc.groups.add(group);
             System.out.println();
         }
+        System.out.println(wc.groups.get(0).getTeams().get(0).getName());
         // System.out.println(wc.region);
         // wc.initializeTeams();.
 
