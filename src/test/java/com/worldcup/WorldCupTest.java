@@ -1913,7 +1913,6 @@ public class WorldCupTest {
         match.play();
         assertEquals(teamA, match.getWinner().name);
     }
-<<<<<<< HEAD
     // 130
 
     // 131
@@ -2972,8 +2971,6 @@ public void testSemiFinalMatchS2_TeamQ2WinsQ1Q2AndTeamQ4WinsQ3Q4() {
     }
 
     // 200
-=======
->>>>>>> 0b679245895bf3daef5f5a42163236f2e0c06d7a
 
 @Test
 public void testSemiFinalMatchS1_TeamQ2WinsQ1Q2AndTeamQ3WinsQ3Q4() {
