@@ -31,7 +31,8 @@ public class Group {
     }
 
     public List<Team> getRankedTeams() {
-        teams.sort(Comparator.comparing(Team::getPoints).reversed());
+        teams.sort(Comparator.comparing(Team::getPoints).reversed()); // sort(Comparator.comparing(Team::getPoints).reversed());
+                                                                      // để sắp xếp các đội theo số điểm giảm dần.
         return teams;
     }
 

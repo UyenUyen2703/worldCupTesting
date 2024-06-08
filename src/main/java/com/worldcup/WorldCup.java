@@ -22,11 +22,12 @@ public class WorldCup {
         for (int i = 0; i < 32; i++) {
             teams.add(new Team("Team " + (i + 1), "Coach" + (i + 1)));
         }
-        // Chia đội thành 8 bảng
-        for (int i = 0; i < 8; i++) {
-            groups.add(new Group("Group " + (char) ('A' + i), teams.subList(i * 4, (i + 1) * 4)));
-            Group.numTeamsOfGroup++;
-        }
+        // // Chia đội thành 8 bảng
+        // for (int i = 0; i < 8; i++) {
+        // groups.add(new Group("Group " + (char) ('A' + i), teams.subList(i * 4, (i +
+        // 1) * 4)));
+        // Group.numTeamsOfGroup++;
+        // }
     }
 
     public List<Team> getTeams() {
@@ -57,53 +58,54 @@ public class WorldCup {
 
     // Chơi tứ kết
     public List<Team> playQuarterFinals() {
-        List<Team> quarterFinalWinners = new ArrayList<>();
-        for (int i = 0; i < 8; i += 2) {
-            Match match = new Match(knockoutStageTeams.get(i), knockoutStageTeams.get(i + 1));
-            match.play();
-            quarterFinalWinners.add(match.getWinner());
+        List<Team> quarterFinalWinners = new ArrayList<>(); // Danh sách các đội thắng ở tứ kết
+        for (int i = 0; i < 8; i += 2) { // i+=2 để chọn ra 2 đội đầu tiên trong danh sách các đội tham gia tứ kết
+            Match match = new Match(knockoutStageTeams.get(i), knockoutStageTeams.get(i + 1)); // Trận đấu giữa đội 1 và
+                                                                                               // đội 2
+            match.play(); // Chơi trận đấu
+            quarterFinalWinners.add(match.getWinner()); // Thêm đội thắng vào danh sách các đội thắng ở tứ kết
         }
-        return quarterFinalWinners;
+        return quarterFinalWinners; // Trả về danh sách các đội thắng ở tứ kết
     }
 
     // Chơi bán kết
     public List<Team> playSemiFinals(List<Team> quarterFinalWinners) {
-        List<Team> semiFinalWinners = new ArrayList<>();
+        List<Team> semiFinalWinners = new ArrayList<>();    // Danh sách các đội thắng ở bán kết
         // Trận S1: Thắng trận Q1 – Thắng trận Q2
-        Match semiFinal1 = new Match(quarterFinalWinners.get(0), quarterFinalWinners.get(1));
+        Match semiFinal1 = new Match(quarterFinalWinners.get(0), quarterFinalWinners.get(1));   // Trận S1 giữa đội thắng Q1 và đội thắng Q2
         semiFinal1.play();
-        semiFinalWinners.add(semiFinal1.getWinner());
+        semiFinalWinners.add(semiFinal1.getWinner());   // Thêm đội thắng vào danh sách các đội thắng ở bán kết
 
         // Trận S2: Thắng trận Q3 – Thắng trận Q4
-        Match semiFinal2 = new Match(quarterFinalWinners.get(2), quarterFinalWinners.get(3));
+        Match semiFinal2 = new Match(quarterFinalWinners.get(2), quarterFinalWinners.get(3));   // Trận S2 giữa đội thắng Q3 và đội thắng Q4
         semiFinal2.play();
-        semiFinalWinners.add(semiFinal2.getWinner());
+        semiFinalWinners.add(semiFinal2.getWinner());   // Thêm đội thắng vào danh sách các đội thắng ở bán kết
 
-        return semiFinalWinners;
+        return semiFinalWinners; // Trả về danh sách các đội thắng ở bán kết
     }
 
     // Choi chung ket
     public void playFinal(List<Team> semiFinalWinners) {
         // Trận chung kết: Thắng S1 – Thắng S2
-        finalMatch = new Match(semiFinalWinners.get(0), semiFinalWinners.get(1));
-        finalMatch.play();
-        champion = finalMatch.getWinner();
+        finalMatch = new Match(semiFinalWinners.get(0), semiFinalWinners.get(1)); // Trận chung kết giữa đội thắng S1 và
+                                                                                  // đội thắng S2
+        finalMatch.play(); // Chơi trận chung kết
+        champion = finalMatch.getWinner(); // Lấy đội thắng chung kết
     }
-
 
     public void playKnockoutStage() {
         // Mô phỏng các trận đấu vòng loại trực tiếp
-        List<Team> currentStageTeams = new ArrayList<>(knockoutStageTeams);
-        while (currentStageTeams.size() > 1) {
-            List<Team> nextStageTeams = new ArrayList<Team>();
-            for (int i = 0; i < currentStageTeams.size(); i += 2) {
-                Match match = new Match(currentStageTeams.get(i), currentStageTeams.get(i + 1));
-                match.play();
-                nextStageTeams.add(match.getWinner());
+        List<Team> currentStageTeams = new ArrayList<>(knockoutStageTeams); // Danh sách các đội tham gia vòng loại trực tiếp
+        while (currentStageTeams.size() > 1) { // Trong khi còn hơn 1 đội tham gia
+            List<Team> nextStageTeams = new ArrayList<Team>(); // Danh sách các đội tham gia vòng tiếp theo
+            for (int i = 0; i < currentStageTeams.size(); i += 2) { // i+=2 để chọn ra 2 đội đầu tiên trong danh sách các đội tham gia
+                Match match = new Match(currentStageTeams.get(i), currentStageTeams.get(i + 1)); // Trận đấu giữa đội 1 và đội 2
+                match.play(); // Chơi trận đấu
+                nextStageTeams.add(match.getWinner()); // Thêm đội thắng vào danh sách các đội thắng ở vòng tiếp theo
             }
-            currentStageTeams = nextStageTeams;
+            currentStageTeams = nextStageTeams; // Cập nhật danh sách các đội tham gia vòng loại trực tiếp
         }
-        champion = currentStageTeams.get(0);
+        champion = currentStageTeams.get(0); // Đội thắng cuối cùng là đội vô địch
         // finalMatch = new Match(currentStageTeams.get(0), currentStageTeams.get(1));
     }
 
@@ -157,8 +159,10 @@ public class WorldCup {
         for (Group group : groups) {
             System.out.println(group.getName() + ":");
             group.printTeamsinGroup();
+            wc.groups.add(group);
             System.out.println();
         }
+        System.out.println(wc.groups.get(0).getTeams().get(0).getName());
         // System.out.println(wc.region);
         // wc.initializeTeams();.
 

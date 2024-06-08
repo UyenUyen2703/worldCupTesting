@@ -15,7 +15,7 @@ public class Team {
         this.name = name;
         this.players = new ArrayList<>();
         this.points = 0; // 9
-        this.matchesPlayed = 0; // 3
+        this.matchesPlayed = 3; // 3
         this.coach = coach;
         this.supportCoach = 0;
     }
@@ -58,11 +58,10 @@ public class Team {
                                                                          // stream: để tạo 1 dòng trong dữ liệu
                                                                          // count(): để đếm số lượng cầu thủ chưa bị
                                                                          // đuổi khỏi sân.
-
     }
 
     public void addPointsForWin() {
-        this.points += 3; // Mỗi lần thắng cộng thêm 3 điểm
+        points += 3;
     }
 
     public void addPointsForDraw() {
@@ -71,6 +70,7 @@ public class Team {
 
     public void addPointsForLoss() {
         // Không cần thêm điểm nếu thua
+        points += 0;
     }
 
     // Phương thức cập nhật điểm số của đội sau mỗi trận đấu
@@ -83,7 +83,4 @@ public class Team {
         }
         // Điểm không thay đổi nếu thua
     }
-
-    
-
 }
