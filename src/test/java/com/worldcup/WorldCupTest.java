@@ -54,6 +54,11 @@ public class WorldCupTest {
             worldCup.groups.get(j).teams.add(new Team("Team" + (i + 4), "Coach " + (i + 4)));
         }
 
+        // Chơi vòng bảng và đưa các đội vào vòng knock-out
+        worldCup.playGroupStage();
+        worldCup.advanceToKnockoutStage();
+
+
     }
 
     // 1
@@ -987,19 +992,21 @@ public class WorldCupTest {
 
     // 90 // Kiểm tra số lượng đội vào vòng 1/16
     @Test
-    public void testNumberOfTeamsInKnockoutStage() {
+    public void testNumberOfTeamsInRoundOf16() {
+        // Lấy danh sách các đội tham gia vòng 1/16
         List<Team> knockoutStageTeams = worldCup.getKnockoutStageTeams();
-        assertEquals("The number of teams in the knockout stage should be 16.", 16, knockoutStageTeams.size());
+        // Kiểm tra số lượng đội là 16
+        assertEquals("The number of teams in the knockout stage should be 16.",16, knockoutStageTeams.size());
     }
-
-    // 91 // Kiểm tra số lượng đội vào vòng 1/8
+    
+    // 91 // Kiểm tra số lượng đội vào vòng 1/8 
     @Test
     public void testQuarterFinals() {
         List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
         assertEquals(4, quarterFinalWinners.size());
     }
 
-    // 92 // Kiểm tra số lượng đội vào bán kết
+    // 92 // Kiểm tra số lượng đội vào bán kết 
     @Test
     public void testSemiFinals() {
         List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
@@ -1008,18 +1015,18 @@ public class WorldCupTest {
     }
 
     // 93 // Kiểm tra số lượng đội vào chung kết
-    // @Test
-    // public void testFinal() {
-    // List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
-    // List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
-    // worldCup.playFinal(semiFinalWinners);
-    // assertEquals(2, semiFinalWinners.size());
-    // assertEquals(worldCup.getChampion(), semiFinalWinners.get(0));
-    // }
+    @Test
+    public void testNumberOfTeamsInFinal() {
+        // Play quarter-finals
+        List<Team> quarterFinalWinners = worldCup.playQuarterFinals();
+        // Play semi-finals
+        List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
+        // Check the number of teams in the final
+        assertEquals("The number of teams in the Final should be 2.",2, semiFinalWinners.size());
+    }
 
-    // 91
-    // 92
-    // 93
+
+    // 94 // Kiểm tra xem tất cả các đội trong vòng 1/16 đều từ vòng bảng
     @Test
     public void testPlayRoundOf16NotNull() {
         assertNotNull(worldCup.getRoundOf16Matches());
