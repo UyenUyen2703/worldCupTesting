@@ -56,11 +56,6 @@ public class WorldCupTest {
 
     }
 
-    // @Before
-    // public void setUpRegion() {
-
-    // }
-
     // 1
     @Test
     public void testInitializeTeams() { // test số lượng đội thi đấu
