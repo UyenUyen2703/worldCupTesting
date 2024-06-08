@@ -13,11 +13,10 @@ public class Match {
     public int scoreTeamB;
     public int haftTime; // hiệp 1
     public boolean injuryTime; // bù giờ
-    public boolean extraTime = false; // hiệp phụ
-    public int totalDuration;   // tổng thời gian
-    public int secondHalfDuration;      // hiệp 2
-    public int halfTimeBreak;       // thời gian nghỉ giữa hiệp
-
+    public boolean extraTime = true; // hiệp phụ
+    public int totalDuration; // tổng thời gian
+    public int secondHalfDuration; // hiệp 2
+    public int halfTimeBreak; // thời gian nghỉ giữa hiệp
 
     public Match(Team teamA, Team teamB) {
         this.teamA = teamA;
@@ -51,9 +50,35 @@ public class Match {
     public boolean isDraw() {
         return draw;
     }
+    public Team getTeamA() {
+        return teamA;
+    }
+
+    public Team getTeamB() {
+        return teamB;
+    }
+
+    public int getScoreTeamA() {
+        return scoreTeamA;
+    }
+
+    public int getScoreTeamB() {
+        return scoreTeamB;
+    }
+
+    public boolean isPlayed() {
+        return winner != null;
+    }
 
     public Team getWinner() {
         return winner;
+    }
+
+    public Team getLoser() {
+        if (winner != null) {
+            return (winner == teamA) ? teamB : teamA;
+        }
+        return null;
     }
 
     public UUID getId() {
@@ -62,11 +87,6 @@ public class Match {
 
     public String getResult() {
         return winner != null ? winner.getName() + " wins" : "Draw";
-    }
-
-    public void playExtraTime() {
-        // Mô phỏng thêm giờ với luật bàn thắng vàng
-        this.play();
     }
 
     public void playPenaltyShootout() {
@@ -108,70 +128,20 @@ public class Match {
         return totalDuration; // Tổng thời gian 90 phút
     }
 
-    public void playMatch() {
-        if (scoreTeamA > scoreTeamB) {
-            teamA.addPoints(3);
-        } else if (scoreTeamB > scoreTeamA) {
-            teamB.addPoints(3);
-        } else {
-            teamA.addPoints(1);
-            teamB.addPoints(1);
-        }
-        teamA.updateGoalDifference(scoreTeamA - scoreTeamB);
-        teamB.updateGoalDifference(scoreTeamB - scoreTeamA);
+    public String playMatch(String TeamA, String TeamB) { // Mô phỏng trận đấu
+        return "Trận đấu đã diễn ra giữa " + TeamA + " và "+ TeamB + " trong "+ totalDuration + " phút.";
+    }
+
+    public void setScore(int scoreTeamA, int scoreTeamB) {
+        this.scoreTeamA = scoreTeamA;
+        this.scoreTeamB = scoreTeamB;
     }
 
     public String playMatchReturn() { // Mô phỏng trận đấu
         return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration + " phút.";
     }
-
-    public void addCard(Card redCard) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'addCard'");
+    public void playExtraTime() {
+        // Implement logic for playing extra time
     }
 
-    public boolean isOvertimePlayed() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isOvertimePlayed'");
-    }
-
-    public int getTeamAGoals() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTeamAGoals'");
-    }
-
-    public int getTeamBGoals() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getTeamBGoals'");
-    }
-
-    public boolean isPenaltyShootout() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'isPenaltyShootout'");
-    }
-
-    public int getHalfTimeBreak() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getHalfTimeBreak'");
-    }
-
-    public void setScore1(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setScore1'");
-    }
-
-    public void setScore2(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'setScore2'");
-    }
-
-    public boolean hasInjuryTime() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'hasInjuryTime'");
-    }
-
-    public boolean hasExtraTime() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'hasExtraTime'");
-    }
 }

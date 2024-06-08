@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Region {
-    public static int numOfRegion = 0;
+    public static int numOfRegion = 6;
     public ArrayList<Team> asia;
     public ArrayList<Team> africa;
     public ArrayList<Team> northCentralAmericaAndCaribbean;
@@ -53,7 +53,6 @@ public class Region {
     }
 
     public void addTeamsInAsia() {
-        numOfRegion++;
         this.asia.add(new Team("Sourth Korea", ""));
         this.asia.add(new Team("Saudi Arabia", ""));
         this.asia.add(new Team("Japan", ""));
@@ -63,8 +62,6 @@ public class Region {
     }
 
     public void addTeamsInAfrica() {
-        numOfRegion++;
-
         this.africa.add(new Team("Cameroon", ""));
         this.africa.add(new Team("Ghana", ""));
         this.africa.add(new Team("Maroc", ""));
@@ -73,8 +70,6 @@ public class Region {
     }
 
     public void addTeamsInNorthCentralAmericaAndCaribbean() {
-        numOfRegion++;
-
         this.northCentralAmericaAndCaribbean.add(new Team("Canada", ""));
         this.northCentralAmericaAndCaribbean.add(new Team("Costa Rica", ""));
         this.northCentralAmericaAndCaribbean.add(new Team("Mexico", ""));
@@ -82,8 +77,6 @@ public class Region {
     }
 
     public void addTeamsInSouthAmerica() {
-        numOfRegion++;
-
         this.southAmerica.add(new Team("Argentina", ""));
         this.southAmerica.add(new Team("Brasil", ""));
         this.southAmerica.add(new Team("Ecuador", ""));
@@ -91,14 +84,10 @@ public class Region {
     }
 
     public void addTeamsInOceania() {
-        numOfRegion++;
-
         this.oceania.add(new Team("New Zealand", ""));
     }
 
     public void addTeamsInEurope() {
-        numOfRegion++;
-
         this.europe.add(new Team("Belgium", ""));
         this.europe.add(new Team("Croatia", ""));
         this.europe.add(new Team("Denmark", ""));

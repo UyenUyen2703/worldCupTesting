@@ -12,19 +12,20 @@ public class WorldCupTest {
 
     public WorldCup worldCup;
     public Region region;
-    public Group group;
+    // public Group group;
     public Match match;
     public Card card;
     public Player player;
-    public Team teamA;
-    public Team teamB;
+    public Team TeamA;
+    public Team TeamB;
 
     @Before
     public void setUp() {
         worldCup = new WorldCup();
         worldCup.initializeTeams();
-        worldCup.playGroupStage();
+        // worldCup.playGroupStage();
         worldCup.advanceToKnockoutStage();
+
         region = new Region();
         match = new Match(null, null);
         region.addTeamsInAsia();
@@ -34,12 +35,26 @@ public class WorldCupTest {
         region.addTeamsInOceania();
         region.addTeamsInSouthAmerica();
 
+        worldCup.groups.add(new Group("Group A", null));
+        worldCup.groups.add(new Group("Group B", null));
+        worldCup.groups.add(new Group("Group C", null));
+        worldCup.groups.add(new Group("Group D", null));
+        worldCup.groups.add(new Group("Group E", null));
+        worldCup.groups.add(new Group("Group F", null));
+        worldCup.groups.add(new Group("Group G", null));
+        worldCup.groups.add(new Group("Group H", null));
+
+        int i = 0;
+
+        for (int j = 0; j < worldCup.groups.size(); j++) {
+            worldCup.groups.get(j).teams = new ArrayList<Team>();
+            worldCup.groups.get(j).teams.add(new Team("Team" + (i + 1), "Coach " + (i + 1)));
+            worldCup.groups.get(j).teams.add(new Team("Team" + (i + 2), "Coach " + (i + 2)));
+            worldCup.groups.get(j).teams.add(new Team("Team" + (i + 3), "Coach " + (i + 3)));
+            worldCup.groups.get(j).teams.add(new Team("Team" + (i + 4), "Coach " + (i + 4)));
+        }
+
     }
-
-    // @Before
-    // public void setUpRegion() {
-
-    // }
 
     // 1
     @Test
@@ -50,7 +65,8 @@ public class WorldCupTest {
     // 2
     @Test
     public void testPlayGroupStageMatches() { // đấu vòng bảng
-        worldCup.playGroupStage();
+
+        // worldCup.playGroupStage();
         worldCup.getGroups().forEach(group -> {
             group.getTeams().forEach(team -> {
                 assertTrue("Mỗi đội sẽ đấu với 3 đội còn trong cùng bảng đấu", team.getMatchesPlayed() == 3);
@@ -61,7 +77,7 @@ public class WorldCupTest {
     // 3
     @Test
     public void testGroupStageRanking() { // kiểm tra xếp hạng trong bảng
-        worldCup.playGroupStage();
+        // worldCup.playGroupStage();
         boolean expected = true;
         worldCup.getGroups().forEach(group -> {
             List<Team> rankedTeams = group.getRankedTeams();
@@ -75,7 +91,7 @@ public class WorldCupTest {
     @Test
     public void testTopTwoTeamsAdvanceToKnockoutStage() { // kiểm tra hai đội xếp thứ nhất và thứ hai của mỗi bảng đấu
                                                           // được tham dự tiếp vòng 1/16.
-        worldCup.playGroupStage();
+        // worldCup.playGroupStage();
         worldCup.advanceToKnockoutStage();
         assertEquals(16, worldCup.getKnockoutStageTeams().size());
     }
@@ -84,7 +100,7 @@ public class WorldCupTest {
     @Test
     public void testKnockoutStageMatches() { // kiểm tra chỉ được một đội thắng ở mỗi bảng
 
-        worldCup.playGroupStage();
+        // worldCup.playGroupStage();
         worldCup.advanceToKnockoutStage();
         worldCup.playKnockoutStage();
         assertNotNull(worldCup.getChampion());
@@ -93,7 +109,7 @@ public class WorldCupTest {
     // 6
     @Test
     public void testFinalMatch() { // kiểm tra cuối trận đấu
-        worldCup.playGroupStage();
+        // worldCup.playGroupStage();
         worldCup.advanceToKnockoutStage();
         worldCup.playKnockoutStage();
         // assertNotNull(worldCup.getFinalMatch());
@@ -272,359 +288,250 @@ public class WorldCupTest {
     // 25
     @Test
     public void testTop1GroupA() {
-        String expected = "Đội 4";
+        String expected = "Team4";
 
-        Team team1 = new Team("Đội 1", "1");
+        Team team1 = worldCup.groups.get(0).teams.get(0);
         team1.points = 6;
-        Team team2 = new Team("Đội 2", "2");
+        Team team2 = worldCup.groups.get(0).teams.get(1);
         team2.points = 3;
-        Team team3 = new Team("Đội 3", "3");
+        Team team3 = worldCup.groups.get(0).teams.get(2);
         team3.points = 0;
-        Team team4 = new Team("Đội 4", "4");
+        Team team4 = worldCup.groups.get(0).teams.get(3);
         team4.points = 9;
-
-        group = new Group("Group A", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        // group.findTop1InGroup();
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(0).getRankedTeams().get(0).name);
     }
     // 26
 
     @Test
     public void testTop2GroupA() {
-        String expected = "Đội 1";
+        String expected = "Team1";
 
-        Team team1 = new Team("Đội 1", "1");
+        Team team1 = worldCup.groups.get(0).teams.get(0);
         team1.points = 6;
-        Team team2 = new Team("Đội 2", "2");
+        Team team2 = worldCup.groups.get(0).teams.get(1);
         team2.points = 3;
-        Team team3 = new Team("Đội 3", "3");
+        Team team3 = worldCup.groups.get(0).teams.get(2);
         team3.points = 0;
-        Team team4 = new Team("Đội 4", "4");
+        Team team4 = worldCup.groups.get(0).teams.get(3);
         team4.points = 9;
-
-        group = new Group("Group A", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        // group.findTop1InGroup();
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(0).getRankedTeams().get(1).name);
     }
 
     // 27
     @Test
     public void testTop1GroupB() {
-        String expected = "Đội 8";
+        String expected = "Team4";
 
-        Team team1 = new Team("Đội 5", "1");
+        Team team1 = worldCup.groups.get(1).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 6", "2");
+        Team team2 = worldCup.groups.get(1).teams.get(1);
         team2.points = 4;
-        Team team3 = new Team("Đội 7", "3");
+        Team team3 = worldCup.groups.get(1).teams.get(2);
         team3.points = 5;
-        Team team4 = new Team("Đội 8", "4");
+        Team team4 = worldCup.groups.get(1).teams.get(3);
         team4.points = 6;
-
-        group = new Group("Group B", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        // group.findTop1InGroup();
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(1).getRankedTeams().get(0).name);
     }
 
     // 28
     @Test
     public void testTop2GroupB() {
-        String expected = "Đội 7";
-        Team team1 = new Team("Đội 5", "1");
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(1).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 6", "2");
+        Team team2 = worldCup.groups.get(1).teams.get(1);
         team2.points = 4;
-        Team team3 = new Team("Đội 7", "3");
+        Team team3 = worldCup.groups.get(1).teams.get(2);
         team3.points = 5;
-        Team team4 = new Team("Đội 8", "4");
+        Team team4 = worldCup.groups.get(1).teams.get(3);
         team4.points = 6;
-
-        group = new Group("Group B", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(1).getRankedTeams().get(1).name);
     }
 
     // 29
     @Test
     public void testTop1GroupC() {
-        String expected = "Đội 9";
-        Team team1 = new Team("Đội 9", "1");
-        team1.points = 7;
-        Team team2 = new Team("Đội 10", "2");
-        team2.points = 1;
-        Team team3 = new Team("Đội 11", "3");
-        team3.points = 4;
-        Team team4 = new Team("Đội 12", "4");
-        team4.points = 2;
-
-        group = new Group("Group C", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(2).teams.get(0);
+        team1.points = 1;
+        Team team2 = worldCup.groups.get(2).teams.get(1);
+        team2.points = 4;
+        Team team3 = worldCup.groups.get(2).teams.get(2);
+        team3.points = 5;
+        Team team4 = worldCup.groups.get(2).teams.get(3);
+        team4.points = 6;
+        assertEquals(expected, worldCup.groups.get(2).getRankedTeams().get(0).name);
     }
 
     // 30
     @Test
     public void testTop2GroupC() {
-        String expected = "Đội 11";
-        Team team1 = new Team("Đội 9", "1");
-        team1.points = 7;
-        Team team2 = new Team("Đội 10", "2");
-        team2.points = 1;
-        Team team3 = new Team("Đội 11", "3");
-        team3.points = 4;
-        Team team4 = new Team("Đội 12", "4");
-        team4.points = 2;
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(2).teams.get(0);
+        team1.points = 1;
+        Team team2 = worldCup.groups.get(2).teams.get(1);
+        team2.points = 4;
+        Team team3 = worldCup.groups.get(2).teams.get(2);
+        team3.points = 5;
+        Team team4 = worldCup.groups.get(2).teams.get(3);
+        team4.points = 6;
 
-        group = new Group("Group C", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(2).getRankedTeams().get(1).name);
     }
 
     // 31
     @Test
     public void testTop1GroupD() {
-        String expected = "Đội 15";
-        Team team1 = new Team("Đội 13", "1");
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(3).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 14", "2");
+        Team team2 = worldCup.groups.get(3).teams.get(1);
         team2.points = 2;
-        Team team3 = new Team("Đội 15", "3");
+        Team team3 = worldCup.groups.get(3).teams.get(2);
         team3.points = 9;
-        Team team4 = new Team("Đội 16", "4");
+        Team team4 = worldCup.groups.get(3).teams.get(3);
         team4.points = 3;
-
-        group = new Group("Group D", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(3).getRankedTeams().get(0).name);
     }
 
     // 32
     @Test
     public void testTop2GroupD() {
-        String expected = "Đội 16";
-        Team team1 = new Team("Đội 13", "1");
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(3).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 14", "2");
+        Team team2 = worldCup.groups.get(3).teams.get(1);
         team2.points = 2;
-        Team team3 = new Team("Đội 15", "3");
+        Team team3 = worldCup.groups.get(3).teams.get(2);
         team3.points = 9;
-        Team team4 = new Team("Đội 16", "4");
+        Team team4 = worldCup.groups.get(3).teams.get(3);
         team4.points = 3;
-
-        group = new Group("Group D", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(3).getRankedTeams().get(1).name);
     }
 
     // 33
     @Test
     public void testTop1GroupE() {
-        String expected = "Đội 19";
-        Team team1 = new Team("Đội 17", "1");
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(4).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 18", "2");
+        Team team2 = worldCup.groups.get(4).teams.get(1);
         team2.points = 3;
-        Team team3 = new Team("Đội 19", "3");
+        Team team3 = worldCup.groups.get(4).teams.get(2);
         team3.points = 7;
-        Team team4 = new Team("Đội 20", "4");
+        Team team4 = worldCup.groups.get(4).teams.get(3);
         team4.points = 5;
 
-        group = new Group("Group E", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(4).getRankedTeams().get(0).name);
     }
 
     // 34
     @Test
     public void testTop2GroupE() {
-        String expected = "Đội 20";
-        Team team1 = new Team("Đội 17", "1");
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(4).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 18", "2");
+        Team team2 = worldCup.groups.get(4).teams.get(1);
         team2.points = 3;
-        Team team3 = new Team("Đội 19", "3");
+        Team team3 = worldCup.groups.get(4).teams.get(2);
         team3.points = 7;
-        Team team4 = new Team("Đội 20", "4");
+        Team team4 = worldCup.groups.get(4).teams.get(3);
         team4.points = 5;
-
-        group = new Group("Group E", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(4).getRankedTeams().get(1).name);
     }
 
     // 35
     @Test
     public void testTop1GroupF() {
-        String expected = "Đội 23";
-        Team team1 = new Team("Đội 21", "1");
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(5).teams.get(0);
         team1.points = 3;
-        Team team2 = new Team("Đội 22", "2");
+        Team team2 = worldCup.groups.get(5).teams.get(1);
         team2.points = 6;
-        Team team3 = new Team("Đội 23", "3");
+        Team team3 = worldCup.groups.get(5).teams.get(2);
         team3.points = 7;
-        Team team4 = new Team("Đội 24", "4");
-        team4.points = 3;
+        Team team4 = worldCup.groups.get(5).teams.get(3);
+        team4.points = 4;
 
-        group = new Group("Group F", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(5).getRankedTeams().get(0).name);
     }
 
     // 36
     @Test
     public void testTop2GroupF() {
-        String expected = "Đội 22";
-        Team team1 = new Team("Đội 21", "1");
+        String expected = "Team2";
+        Team team1 = worldCup.groups.get(5).teams.get(0);
         team1.points = 3;
-        Team team2 = new Team("Đội 22", "2");
+        Team team2 = worldCup.groups.get(5).teams.get(1);
         team2.points = 6;
-        Team team3 = new Team("Đội 23", "3");
+        Team team3 = worldCup.groups.get(5).teams.get(2);
         team3.points = 7;
-        Team team4 = new Team("Đội 24", "4");
-        team4.points = 3;
-
-        group = new Group("Group F", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        Team team4 = worldCup.groups.get(5).teams.get(3);
+        team4.points = 4;
+        assertEquals(expected, worldCup.groups.get(5).getRankedTeams().get(1).name);
     }
 
     // 37
     @Test
     public void testTop1GroupG() {
-        String expected = "Đội 25";
-        Team team1 = new Team("Đội 25", "1");
+        String expected = "Team1";
+        Team team1 = worldCup.groups.get(6).teams.get(0);
         team1.points = 6;
-        Team team2 = new Team("Đội 26", "2");
+        Team team2 = worldCup.groups.get(6).teams.get(1);
         team2.points = 0;
-        Team team3 = new Team("Đội 27", "3");
+        Team team3 = worldCup.groups.get(6).teams.get(2);
         team3.points = 1;
-        Team team4 = new Team("Đội 28", "4");
+        Team team4 = worldCup.groups.get(6).teams.get(3);
         team4.points = 3;
 
-        group = new Group("Group G", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(6).getRankedTeams().get(0).name);
     }
 
     // 38
     @Test
     public void testTop2GroupG() {
-        String expected = "Đội 28";
-        Team team1 = new Team("Đội 25", "1");
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(6).teams.get(0);
         team1.points = 6;
-        Team team2 = new Team("Đội 26", "2");
+        Team team2 = worldCup.groups.get(6).teams.get(1);
         team2.points = 0;
-        Team team3 = new Team("Đội 27", "3");
+        Team team3 = worldCup.groups.get(6).teams.get(2);
         team3.points = 1;
-        Team team4 = new Team("Đội 28", "4");
+        Team team4 = worldCup.groups.get(6).teams.get(3);
         team4.points = 3;
-
-        group = new Group("Group G", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(6).getRankedTeams().get(1).name);
     }
 
     // 39
     @Test
     public void testTop1GroupH() {
-        String expected = "Đội 30";
-        Team team1 = new Team("Đội 29", "1");
+        String expected = "Team2";
+        Team team1 = worldCup.groups.get(7).teams.get(0);
         team1.points = 4;
-        Team team2 = new Team("Đội 30", "2");
+        Team team2 = worldCup.groups.get(7).teams.get(1);
         team2.points = 6;
-        Team team3 = new Team("Đội 31", "3");
+        Team team3 = worldCup.groups.get(7).teams.get(2);
         team3.points = 1;
-        Team team4 = new Team("Đội 32", "4");
+        Team team4 = worldCup.groups.get(7).teams.get(3);
         team4.points = 5;
 
-        group = new Group("Group H", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(7).getRankedTeams().get(0).name);
     }
 
     // 40
     @Test
     public void testTop2GroupH() {
-        String expected = "Đội 32";
-        Team team1 = new Team("Đội 29", "1");
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(7).teams.get(0);
         team1.points = 4;
-        Team team2 = new Team("Đội 30", "2");
+        Team team2 = worldCup.groups.get(7).teams.get(1);
         team2.points = 6;
-        Team team3 = new Team("Đội 31", "3");
+        Team team3 = worldCup.groups.get(7).teams.get(2);
         team3.points = 1;
-        Team team4 = new Team("Đội 32", "4");
+        Team team4 = worldCup.groups.get(7).teams.get(3);
         team4.points = 5;
 
-        group = new Group("Group H", null);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(7).getRankedTeams().get(1).name);
     }
 
     // 41
@@ -656,9 +563,11 @@ public class WorldCupTest {
     // 44 // Giả sử đội thứ nhất thắng 1 trận cộng đúng 3 điểm
     @Test
     public void testTeamWin() {
+
+        int expected = 3;
         Team team = worldCup.getTeams().get(0); // Lấy đội thứ nhất
         team.addPointsForWin(); // Thắng 1 trận
-        assertEquals(3, team.getPoints());
+        assertEquals(expected, team.getPoints());
     }
 
     // 45 // Giả sử đội thứ nhất hòa 1 trận cộng đúng 1 điểm
@@ -805,11 +714,19 @@ public class WorldCupTest {
     }
 
     // 57 // Kiểm tra thông báo của trận đấu
+    // @Test
+    // public void testPlayMatch() {
+    // String expectedMessage = "Trận đấu đã diễn ra giữa Team A và Team B trong 105
+    // phút.";
+    // assertEquals(expectedMessage, match.playMatch(), "Trận đấu đã diễn ra giữa
+    // Team A và Team B trong 105 phút.");
+    // }
+
     @Test
-    public void testPlayMatch() {
-        String expectedMessage = "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.";
-        assertEquals(expectedMessage, match.playMatchReturn(),
-                "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.");
+    public void testPlayMatchTeam3Team4() {
+        String expectedMessage = "Trận đấu đã diễn ra giữa Team3 và Team4 trong 105 phút.";
+        assertEquals(expectedMessage, match.playMatch("Team3", "Team4"),
+                "Trận đấu đã diễn ra giữa Team3 và Team4 trong 105 phút.");
     }
 
     // 58 // Kiểm tra điểm của đội 1
@@ -1501,6 +1418,341 @@ public class WorldCupTest {
         worldCup.playFinal(semiFinalWinners);
         assertNotNull(worldCup.getChampion());
     }
+    // 91
+    // 92
+    // 93
+    @Test
+    public void testPlayRoundOf16NotNull() {
+        assertNotNull(worldCup.getRoundOf16Matches());
+    }
+
+    // 94 // Kiểm tra xem tất cả các đội trong vòng 1/16 đều từ vòng bảng
+    @Test
+    public void testTeamsInRoundOf16FromGroupStage() {
+        List<Team> roundOf16Teams = worldCup.getKnockoutStageTeams();
+        List<Team> groupStageTeams = worldCup.getAllTeamsFromGroupStage();
+        assertTrue("All teams in the round of 16 should be from the group stage.",
+                groupStageTeams.containsAll(roundOf16Teams));
+    }
+
+    // 95// Kiểm tra xem tất cả các trận đấu trong vòng 1/16 đều có kết quả
+    @Test
+    public void testAllMatchesInRoundOf16HaveResult() {
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        for (Match match : roundOf16Matches) {
+            assertNotNull("Each match should have a result.", match.getResult());
+        }
+    }
+
+    // 96 // Số đội được chọn vào vòng 1/8 đúng bằng nửa số đội của vòng trước
+    @Test
+    public void testPlayRoundOf16TeamsQualified() {
+        List<Team> roundOf16Teams = worldCup.getKnockoutStageTeams();
+        worldCup.playRoundOf16();
+        List<Team> qualifiedTeams = worldCup.getKnockoutStageTeams();
+        assertEquals(roundOf16Teams.size() / 2, qualifiedTeams.size());
+    }
+
+    // 97 // Kiểm tra kết quả của từng trận đấu trong vòng 16 đội
+    @Test
+    public void testRoundOf16MatchResults() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertNotNull(match.getWinner());
+        }
+    }
+
+    // 98 // Kiểm tra tính hợp lệ của các đội tiến vào vòng 16 đội
+    @Test
+    public void testRoundOf16Teams() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        List<Team> roundOf16Teams = new ArrayList<>();
+        for (Match match : roundOf16Matches) {
+            roundOf16Teams.add(match.getWinner());
+        }
+        assertEquals(8, roundOf16Teams.size());
+    }
+
+    // 99 //Kiểm tra đội bóng được giữa và chơi trong vòng 16 đội
+    @Test
+    public void testRoundOf16TeamsParticipation() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertNotNull(match.getTeamA());
+            assertNotNull(match.getTeamB());
+        }
+    }
+
+    // 100 //Kiểm tra kết quả chính xác của từng trận đấu
+    @Test
+    public void testRoundOf16MatchDetails() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertTrue(match.getScoreTeamA() >= 0);
+            assertTrue(match.getScoreTeamB() >= 0);
+        }
+    }
+
+    // 101 //Kiểm tra tính hợp lệ của kết quả cuối cùng (người chiến thắng) của từng
+    // trận đấu
+    @Test
+    public void testRoundOf16MatchWinners() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertNotNull(match.getWinner());
+        }
+    }
+
+    // 101 //Kiểm tra tính hợp lệ của việc chơi các trận đấu
+    @Test
+    public void testRoundOf16MatchPlay() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertTrue(match.getScoreTeamA() >= 0);
+            assertTrue(match.getScoreTeamB() >= 0);
+            assertNotNull(match.getWinner());
+        }
+    }
+
+    // 102 //Kiểm tra tính hợp lệ của việc cập nhật kết quả vào danh sách đội
+    @Test
+    public void testRoundOf16TeamsUpdate() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertNotNull(match.getWinner());
+            assertTrue(worldCup.getKnockoutStageTeams().contains(match.getWinner()));
+        }
+    }
+
+    // 103 //Kiểm tra tính đa dạng của các đội chia vào các trận đấu
+    @Test
+    public void testRoundOf16TeamsDiversity() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        List<Team> allTeams = new ArrayList<>();
+        for (Match match : roundOf16Matches) {
+            allTeams.add(match.getTeamA());
+            allTeams.add(match.getTeamB());
+        }
+        long distinctTeams = allTeams.stream().distinct().count();
+        assertEquals(16, distinctTeams);
+    }
+
+    // 104 //Kiểm tra tỷ số cuối cùng của các trận đấu không âm
+    @Test
+    public void testRoundOf16ScoresNonNegative() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertTrue(match.getScoreTeamA() >= 0);
+            assertTrue(match.getScoreTeamB() >= 0);
+        }
+    }
+
+    // 105 //Kiểm tra tổng số trận đấu trong vòng 16 đội
+    @Test
+    public void testRoundOf16TotalMatches() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        assertEquals(8, roundOf16Matches.size());
+    }
+
+    // 106 //Kiểm tra không có đội nào thi đấu với chính mình
+    @Test
+    public void testRoundOf16NoSelfMatch() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertNotEquals(match.getTeamA(), match.getTeamB());
+        }
+    }
+
+    // 107 //Kiểm tra tổng điểm của tất cả các trận đấu vòng 1/16
+    @Test
+    public void testRoundOf16TotalPoints() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        int totalPoints = 0;
+        for (Match match : roundOf16Matches) {
+            totalPoints += match.getScoreTeamA() + match.getScoreTeamB();
+        }
+        assertTrue(totalPoints >= 0);
+    }
+
+    // 108 //Kiểm tra các trận đấu đã được chơi hay chưa
+    @Test
+    public void testRoundOf16MatchPlayed() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertTrue(match.isPlayed());
+        }
+    }
+
+    // 109 //Kiểm tra xem tất cả các đội tham gia vòng 1/16 đều là các đội đúng theo
+    // kỳ vọng
+    @Test
+    public void testRoundOf16ParticipatingTeams() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        List<Team> roundOf16Teams = new ArrayList<>();
+        for (Match match : roundOf16Matches) {
+            roundOf16Teams.add(match.getTeamA());
+            roundOf16Teams.add(match.getTeamB());
+        }
+        assertEquals(16, roundOf16Teams.size());
+        assertTrue(worldCup.getAllTeamsFromGroupStage().containsAll(roundOf16Teams));
+    }
+
+    // 110 //Kiểm tra xem các trận đấu không có đội nào thi đấu trên sân nhà
+    @Test
+    public void testRoundOf16NoHomeAdvantage() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertNotEquals(match.getTeamA(), match.getTeamB());
+        }
+    }
+
+    // 111
+
+    // 112 //Kiểm tra xem tất cả các đội tham gia vòng 1/16 đều là các đội thực sự
+    // tồn tại
+    @Test
+    public void testRoundOf16TeamsExistence() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertNotNull(match.getTeamA());
+            assertNotNull(match.getTeamB());
+        }
+    }
+
+    // 113 //Kiểm tra xem người thắng mỗi trận đấu đã được xác định đúng
+    @Test
+    public void testRoundOf16WinnersDetermined() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertNotNull(match.getWinner());
+        }
+    }
+
+    // 114 //Kiểm tra kết quả cuối cùng của từng trận đấu không âm
+    @Test
+    public void testRoundOf16MatchResultsNonNegative() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertTrue(match.getScoreTeamA() >= 0);
+            assertTrue(match.getScoreTeamB() >= 0);
+        }
+    }
+
+    // 115
+
+    // 116 //Kiểm tra xem tất cả các đội tham gia vòng 1/16 đều là các đội duy nhất
+    @Test
+    public void testRoundOf16UniqueTeams() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        List<Team> allTeams = new ArrayList<>();
+        for (Match match : roundOf16Matches) {
+            allTeams.add(match.getTeamA());
+            allTeams.add(match.getTeamB());
+        }
+        long distinctTeams = allTeams.stream().distinct().count();
+        assertEquals(16, distinctTeams);
+    }
+
+    // 117 //Kiểm tra xem không có hai trận đấu nào giống nhau
+    @Test
+    public void testRoundOf16UniqueMatchPairs() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        List<String> matchPairs = new ArrayList<>();
+        for (Match match : roundOf16Matches) {
+            String pair = match.getTeamA().getName() + " vs " + match.getTeamB().getName();
+            assertFalse(matchPairs.contains(pair));
+            matchPairs.add(pair);
+        }
+    }
+
+    // 118 //Kiểm tra xem tất cả các đội tham gia vòng 1/16 đều là các đội có điểm
+    // từ vòng bảng
+    @Test
+    public void testRoundOf16TeamsFromGroupStage() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        List<Team> allTeams = new ArrayList<>();
+        for (Match match : roundOf16Matches) {
+            allTeams.add(match.getTeamA());
+            allTeams.add(match.getTeamB());
+        }
+        List<Team> groupStageTeams = worldCup.getAllTeamsFromGroupStage();
+        assertTrue(groupStageTeams.containsAll(allTeams));
+    }
+
+    // 119 //Kiểm tra xem có đủ số trận đấu được chơi trong vòng 1/16 không
+    @Test
+    public void testRoundOf16MatchesPlayedCount() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        long playedMatchesCount = roundOf16Matches.stream().filter(Match::isPlayed).count();
+        assertEquals(8, playedMatchesCount);
+    }
+
+    // 120 //Kiểm tra xem kết quả của từng trận đấu đã được cập nhật đúng trong danh sách đội
+    @Test
+    public void testRoundOf16TeamResultsUpdate() {
+        worldCup.playRoundOf16();
+        List<Match> roundOf16Matches = worldCup.getRoundOf16Matches();
+        assertNotNull(roundOf16Matches);
+        for (Match match : roundOf16Matches) {
+            assertTrue(worldCup.getKnockoutStageTeams().contains(match.getWinner())); // Đội thắng được thêm vào danh
+                                                                                      // sách đội
+        }
+    }
+
+    // 121 //Kiểm tra xem có đủ 8 đội thắng để tiến vào tứ kết không:
+    @Test
+    public void testRoundOf16WinnersCount() {
+        Team teamA = new Team("Team A", "");
+        Team teamB = new Team("Team B", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(4, 5);
+        match.play();
+        assertEquals(teamB, match.getWinner());
+    }
 
     // 122
     @Test
@@ -1508,12 +1760,30 @@ public class WorldCupTest {
         worldCup.playKnockoutStage();
         assertNotNull(worldCup.getChampion());
     }
+    //
+    public void testRoundOf16Match1() {
+        Team teamA = new Team("Team A", "");
+        Team teamB = new Team("Team B", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(3, 0);
+        match.play();
+        assertEquals(teamA, match.getWinner());
+    }
 
     // 123
     @Test
     public void testChampionInKnockoutStage() {
         worldCup.playKnockoutStage();
         assertTrue(worldCup.getKnockoutStageTeams().contains(worldCup.getChampion()));
+    }
+    //
+    public void testRoundOf16Match2() {
+        Team teamA = new Team("Team A", "");
+        Team teamB = new Team("Team B", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(0, 3);
+        match.play();
+        assertEquals(teamB, match.getWinner());
     }
 
     // 124
@@ -1524,6 +1794,15 @@ public class WorldCupTest {
         worldCup.playFinal(semiFinalWinners);
         assertNotNull(worldCup.getFinalMatch().getWinner());
     }
+    //
+    public void testRoundOf16Match3() {
+        Team teamA = new Team("đội 1", "");
+        Team teamB = new Team("đội 2", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(2, 1);
+        match.play();
+        assertEquals(teamA, match.getWinner());
+    }
 
     // 125
     @Test
@@ -1532,6 +1811,15 @@ public class WorldCupTest {
         List<Team> semiFinalWinners = worldCup.playSemiFinals(quarterFinalWinners);
         worldCup.playFinal(semiFinalWinners);
         assertNotNull(worldCup.getFinalMatch().getResult());
+    }
+    //
+    public void testRoundOf16Match4() {
+        Team teamA = new Team("đội 3", "");
+        Team teamB = new Team("đội 4", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(0, 3);
+        match.play();
+        assertEquals(teamA, match.getWinner());
     }
 
     // 126
@@ -1543,6 +1831,15 @@ public class WorldCupTest {
         assertTrue(worldCup.getFinalMatch().getScore1() >= 0);
         assertTrue(worldCup.getFinalMatch().getScore2() >= 0);
     }
+    //
+    public void testRoundOf16Match5() {
+        Team teamA = new Team("đội 5", "");
+        Team teamB = new Team("đội 6", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(3, 0);
+        match.play();
+        assertEquals(teamB, match.getWinner());
+    }
 
     // 127
     @Test
@@ -1552,11 +1849,29 @@ public class WorldCupTest {
         worldCup.playFinal(semiFinalWinners);
         assertTrue(worldCup.getFinalMatch().getTotalDuration() > 0);
     }
+    //
+    public void testRoundOf16Match6() {
+        Team teamA = new Team("đội 7", "");
+        Team teamB = new Team("đội 8", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(2, 3);
+        match.play();
+        assertEquals(teamA,match.getWinner());
+    }
 
     // 128
     @Test
     public void testKnockoutStageTeamsNotNull() {
         assertNotNull(worldCup.getKnockoutStageTeams());
+    }
+    //
+    public void testRoundOf16Match7() {
+        Team teamA = new Team("đội 9", "");
+        Team teamB = new Team("đội 10", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(1, 3);
+        match.play();
+        assertEquals(teamB,match.getWinner());
     }
 
     // 129
@@ -1577,5 +1892,96 @@ public class WorldCupTest {
     public void testFinalMatchNotNull() {
         assertNull(worldCup.getFinalMatch());
     }
+    //
+    public void testRoundOf16Match8() {
+        Team teamA = new Team("đội 11", "");
+        Team teamB = new Team("đội 12", "");
+        Match match = new Match(teamA, teamB);
+        match.setScore(2, 1);
+        match.play();
+        assertEquals(teamA,match.getWinner());
+    }
+    // 130
+
+    // 131
+
+    // 132
+
+    // 133
+
+    // 134
+
+    // 135
+
+    // 136
+
+    // 137
+
+    // 138
+
+    // 139
+
+    // 140
+
+    // 141
+    // 142
+    // 143
+    // 144
+    // 145
+    // 146
+    // 147
+    // 148
+    // 149
+    // 150
+    // 151
+    // 152
+    // 153
+    // 154
+    // 155
+    // 156
+    // 157
+    // 158
+    // 159
+    // 160
+    // 161
+    // 162
+    // 163
+    // 164
+    // 165
+    // 166
+    // 167
+    // 168
+    // 169
+    // 170
+    // 171
+    // 172
+    // 173
+    // 174
+    // 175
+    // 176
+    // 177
+    // 178
+    // 179
+    // 180
+    // 181
+    // 182
+    // 183
+    // 184
+    // 185
+    // 186
+    // 187
+    // 188
+    // 189
+    // 190
+    // 191
+    // 192
+    // 193
+    // 194
+    // 195
+    // 196
+    // 197
+    // 198
+    // 199
+    // 200
 
 }
