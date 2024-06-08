@@ -8,19 +8,19 @@ public class Team {
     public List<Player> players;
     public int points;
     public int matchesPlayed;
-    public String coach;
+    public int coach;
     public int supportCoach;
 
-    public Team(String name, String coach) {
+    public Team(String name) {
         this.name = name;
         this.players = new ArrayList<>();
         this.points = 0; // 9
         this.matchesPlayed = 3; // 3
-        this.coach = coach;
+        this.coach = 0;
         this.supportCoach = 0;
     }
 
-    public String getCoach() {
+    public int getCoach() {
         return coach;
     }
 
@@ -61,7 +61,7 @@ public class Team {
     }
 
     public void addPointsForWin() {
-        this.points += 3;
+        points += 3;
     }
 
     public void addPointsForDraw() {
@@ -83,5 +83,5 @@ public class Team {
         }
         // Điểm không thay đổi nếu thua
     }
-    
+
 }
