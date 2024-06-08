@@ -62,7 +62,7 @@ public class Team {
     }
 
     public void addPointsForWin() {
-        points += 3;
+        this.points += 3; // Mỗi lần thắng cộng thêm 3 điểm
     }
 
     public void addPointsForDraw() {
