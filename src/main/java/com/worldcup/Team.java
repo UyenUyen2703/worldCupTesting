@@ -61,7 +61,7 @@ public class Team {
     }
 
     public void addPointsForWin() {
-        points += 3;
+        this.points += 3;
     }
 
     public void addPointsForDraw() {
