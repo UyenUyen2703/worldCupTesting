@@ -10,12 +10,14 @@ public class WorldCup {
     public Team champion;
     public Match finalMatch;
     public List<Region> region;
+    public List<Match> roundOf16Matches;
 
     public WorldCup() {
         this.teams = new ArrayList<>();
         this.groups = new ArrayList<>();
         this.knockoutStageTeams = new ArrayList<>();
         this.region = new ArrayList<>();
+        this.roundOf16Matches = new ArrayList<>();
     }
 
     public void initializeTeams() {
@@ -55,6 +57,32 @@ public class WorldCup {
         }
     }
 
+    // chơi vòng loại 1/16
+    public void playRoundOf16() {
+        List<Team> roundOf16Teams = getKnockoutStageTeams(); // Lấy danh sách đội tham gia vòng 1/16
+    
+        // Mô phỏng các trận đấu trong vòng 1/16
+        for (int i = 0; i < roundOf16Teams.size(); i += 2) {
+            Team team1 = roundOf16Teams.get(i);
+            Team team2 = roundOf16Teams.get(i + 1);
+            Match match = new Match(team1, team2);
+            match.play(); // Chơi trận đấu
+            roundOf16Matches.add(match); // Thêm trận đấu vào danh sách các trận đấu vòng 1/16
+        }
+    }
+    
+    public List<Match> getRoundOf16Matches() {
+        return roundOf16Matches;
+    }
+
+    public List<Team> getAllTeamsFromGroupStage() {
+        List<Team> allGroupStageTeams = new ArrayList<>();
+        for (Group group : groups) {
+            allGroupStageTeams.addAll(group.getTeams());
+        }
+        return allGroupStageTeams;
+    }
+    
     // Chơi tứ kết
     public List<Team> playQuarterFinals() {
         List<Team> quarterFinalWinners = new ArrayList<>();

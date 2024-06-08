@@ -51,9 +51,35 @@ public class Match {
     public boolean isDraw() {
         return draw;
     }
+    public Team getTeamA() {
+        return teamA;
+    }
+
+    public Team getTeamB() {
+        return teamB;
+    }
+
+    public int getScoreTeamA() {
+        return scoreTeamA;
+    }
+
+    public int getScoreTeamB() {
+        return scoreTeamB;
+    }
+
+    public boolean isPlayed() {
+        return winner != null;
+    }
 
     public Team getWinner() {
         return winner;
+    }
+
+    public Team getLoser() {
+        if (winner != null) {
+            return (winner == teamA) ? teamB : teamA;
+        }
+        return null;
     }
 
     public UUID getId() {
@@ -119,6 +145,11 @@ public class Match {
         }
         teamA.updateGoalDifference(scoreTeamA - scoreTeamB);
         teamB.updateGoalDifference(scoreTeamB - scoreTeamA);
+    }
+
+    public void setScore(int scoreTeamA, int scoreTeamB) {
+        this.scoreTeamA = scoreTeamA;
+        this.scoreTeamB = scoreTeamB;
     }
 
     public String playMatchReturn() { // Mô phỏng trận đấu
