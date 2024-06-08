@@ -61,7 +61,7 @@ public class Team {
     }
 
     public void addPointsForWin() {
-        this.points += 3;
+        points += 3;
     }
 
     public void addPointsForDraw() {
@@ -83,5 +83,5 @@ public class Team {
         }
         // Điểm không thay đổi nếu thua
     }
-    
+
 }
