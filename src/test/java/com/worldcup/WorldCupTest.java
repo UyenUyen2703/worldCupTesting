@@ -35,14 +35,17 @@ public class WorldCupTest {
         region.addTeamsInOceania();
         region.addTeamsInSouthAmerica();
 
-        worldCup.groups.add(new Group("Group A", null));
-        worldCup.groups.add(new Group("Group B", null));
-        worldCup.groups.add(new Group("Group C", null));
-        worldCup.groups.add(new Group("Group D", null));
-        worldCup.groups.add(new Group("Group E", null));
-        worldCup.groups.add(new Group("Group F", null));
-        worldCup.groups.add(new Group("Group G", null));
-        worldCup.groups.add(new Group("Group H", null));
+        for (int i = 0; i < 8; i++) {
+            worldCup.groups.add(new Group("Group " + (i + 1), null));
+        }
+        // worldCup.groups.add(new Group("Group A", null));
+        // worldCup.groups.add(new Group("Group B", null));
+        // worldCup.groups.add(new Group("Group C", null));
+        // worldCup.groups.add(new Group("Group D", null));
+        // worldCup.groups.add(new Group("Group E", null));
+        // worldCup.groups.add(new Group("Group F", null));
+        // worldCup.groups.add(new Group("Group G", null));
+        // worldCup.groups.add(new Group("Group H", null));
 
         int i = 0;
 

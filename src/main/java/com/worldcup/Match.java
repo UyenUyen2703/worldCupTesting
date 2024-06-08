@@ -87,7 +87,7 @@ public class Match {
     }
 
     public String getResult() {
-        return winner != null ? winner.getName()+ " wins" : "Draw";
+        return winner != null ? winner.getName() + " wins" : "Draw";
     }
 
     public void playPenaltyShootout() {
@@ -144,10 +144,11 @@ public class Match {
     }
 
     public void playExtraTime() {
-
+        // Implement logic for playing extra time
     }
 
-    public void setWinner(Team winner) {
-        this.winner = winner;
+    public Team setWinner(Team teamA2) {
+        return teamA2;
     }
+
 }
