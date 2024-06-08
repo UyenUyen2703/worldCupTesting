@@ -116,7 +116,7 @@ public class WorldCup {
     public void playFinal(List<Team> semiFinalWinners) {
         // Trận chung kết: Thắng S1 – Thắng S2
         finalMatch = new Match(semiFinalWinners.get(0), semiFinalWinners.get(1)); // Trận chung kết giữa đội thắng S1 và
-                                                                                  // đội thắng S2
+                                                                                              // đội thắng S2
         finalMatch.play(); // Chơi trận chung kết
         champion = finalMatch.getWinner(); // Lấy đội thắng chung kết
     }
