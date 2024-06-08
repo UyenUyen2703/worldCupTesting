@@ -309,7 +309,7 @@ public class WorldCupTest {
 
     @Test
     public void testTop2GroupA() {
-        String expected = "Đội 1";
+        String expected = "Team1";
 
         Team team1 = worldCup.groups.get(0).teams.get(0);
         team1.points = 6;
@@ -325,311 +325,218 @@ public class WorldCupTest {
     // 27
     @Test
     public void testTop1GroupB() {
-        String expected = "Đội 8";
+        String expected = "Team4";
 
-        Team team1 = new Team("Đội 5", "1");
+        Team team1 = worldCup.groups.get(1).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 6", "2");
+        Team team2 = worldCup.groups.get(1).teams.get(1);
         team2.points = 4;
-        Team team3 = new Team("Đội 7", "3");
+        Team team3 = worldCup.groups.get(1).teams.get(2);
         team3.points = 5;
-        Team team4 = new Team("Đội 8", "4");
+        Team team4 = worldCup.groups.get(1).teams.get(3);
         team4.points = 6;
-
-        Group group = worldCup.groups.get(1);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        // group.findTop1InGroup();
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(1).getRankedTeams().get(0).name);
     }
 
     // 28
     @Test
     public void testTop2GroupB() {
-        String expected = "Đội 7";
-        Team team1 = new Team("Đội 5", "1");
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(1).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 6", "2");
+        Team team2 = worldCup.groups.get(1).teams.get(1);
         team2.points = 4;
-        Team team3 = new Team("Đội 7", "3");
+        Team team3 = worldCup.groups.get(1).teams.get(2);
         team3.points = 5;
-        Team team4 = new Team("Đội 8", "4");
+        Team team4 = worldCup.groups.get(1).teams.get(3);
         team4.points = 6;
-
-        Group group = worldCup.groups.get(1);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(1).getRankedTeams().get(1).name);
     }
 
     // 29
     @Test
     public void testTop1GroupC() {
-        String expected = "Đội 9";
-        Team team1 = new Team("Đội 9", "1");
-        team1.points = 7;
-        Team team2 = new Team("Đội 10", "2");
-        team2.points = 1;
-        Team team3 = new Team("Đội 11", "3");
-        team3.points = 4;
-        Team team4 = new Team("Đội 12", "4");
-        team4.points = 2;
-
-        Group group = worldCup.groups.get(2);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(2).teams.get(0);
+        team1.points = 1;
+        Team team2 = worldCup.groups.get(2).teams.get(1);
+        team2.points = 4;
+        Team team3 = worldCup.groups.get(2).teams.get(2);
+        team3.points = 5;
+        Team team4 = worldCup.groups.get(2).teams.get(3);
+        team4.points = 6;
+        assertEquals(expected, worldCup.groups.get(2).getRankedTeams().get(0).name);
     }
 
     // 30
     @Test
     public void testTop2GroupC() {
-        String expected = "Đội 11";
-        Team team1 = new Team("Đội 9", "1");
-        team1.points = 7;
-        Team team2 = new Team("Đội 10", "2");
-        team2.points = 1;
-        Team team3 = new Team("Đội 11", "3");
-        team3.points = 4;
-        Team team4 = new Team("Đội 12", "4");
-        team4.points = 2;
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(2).teams.get(0);
+        team1.points = 1;
+        Team team2 = worldCup.groups.get(2).teams.get(1);
+        team2.points = 4;
+        Team team3 = worldCup.groups.get(2).teams.get(2);
+        team3.points = 5;
+        Team team4 = worldCup.groups.get(2).teams.get(3);
+        team4.points = 6;
 
-        Group group = worldCup.groups.get(2);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(2).getRankedTeams().get(1).name);
     }
 
     // 31
     @Test
     public void testTop1GroupD() {
-        String expected = "Đội 15";
-        Team team1 = new Team("Đội 13", "1");
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(3).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 14", "2");
+        Team team2 = worldCup.groups.get(3).teams.get(1);
         team2.points = 2;
-        Team team3 = new Team("Đội 15", "3");
+        Team team3 = worldCup.groups.get(3).teams.get(2);
         team3.points = 9;
-        Team team4 = new Team("Đội 16", "4");
+        Team team4 = worldCup.groups.get(3).teams.get(3);
         team4.points = 3;
-
-        Group group = worldCup.groups.get(3);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(3).getRankedTeams().get(0).name);
     }
 
     // 32
     @Test
     public void testTop2GroupD() {
-        String expected = "Đội 16";
-        Team team1 = new Team("Đội 13", "1");
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(3).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 14", "2");
+        Team team2 = worldCup.groups.get(3).teams.get(1);
         team2.points = 2;
-        Team team3 = new Team("Đội 15", "3");
+        Team team3 = worldCup.groups.get(3).teams.get(2);
         team3.points = 9;
-        Team team4 = new Team("Đội 16", "4");
+        Team team4 = worldCup.groups.get(3).teams.get(3);
         team4.points = 3;
-
-        Group group = worldCup.groups.get(3);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(3).getRankedTeams().get(1).name);
     }
 
     // 33
     @Test
     public void testTop1GroupE() {
-        String expected = "Đội 19";
-        Team team1 = new Team("Đội 17", "1");
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(4).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 18", "2");
+        Team team2 = worldCup.groups.get(4).teams.get(1);
         team2.points = 3;
-        Team team3 = new Team("Đội 19", "3");
+        Team team3 = worldCup.groups.get(4).teams.get(2);
         team3.points = 7;
-        Team team4 = new Team("Đội 20", "4");
+        Team team4 = worldCup.groups.get(4).teams.get(3);
         team4.points = 5;
 
-        Group group = worldCup.groups.get(4);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(4).getRankedTeams().get(0).name);
     }
 
     // 34
     @Test
     public void testTop2GroupE() {
-        String expected = "Đội 20";
-        Team team1 = new Team("Đội 17", "1");
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(4).teams.get(0);
         team1.points = 1;
-        Team team2 = new Team("Đội 18", "2");
+        Team team2 = worldCup.groups.get(4).teams.get(1);
         team2.points = 3;
-        Team team3 = new Team("Đội 19", "3");
+        Team team3 = worldCup.groups.get(4).teams.get(2);
         team3.points = 7;
-        Team team4 = new Team("Đội 20", "4");
+        Team team4 = worldCup.groups.get(4).teams.get(3);
         team4.points = 5;
-
-        Group group = worldCup.groups.get(4);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(4).getRankedTeams().get(1).name);
     }
 
     // 35
     @Test
     public void testTop1GroupF() {
-        String expected = "Đội 23";
-        Team team1 = new Team("Đội 21", "1");
+        String expected = "Team3";
+        Team team1 = worldCup.groups.get(5).teams.get(0);
         team1.points = 3;
-        Team team2 = new Team("Đội 22", "2");
+        Team team2 = worldCup.groups.get(5).teams.get(1);
         team2.points = 6;
-        Team team3 = new Team("Đội 23", "3");
+        Team team3 = worldCup.groups.get(5).teams.get(2);
         team3.points = 7;
-        Team team4 = new Team("Đội 24", "4");
-        team4.points = 3;
+        Team team4 = worldCup.groups.get(5).teams.get(3);
+        team4.points = 4;
 
-        Group group = worldCup.groups.get(5);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(5).getRankedTeams().get(0).name);
     }
 
     // 36
     @Test
     public void testTop2GroupF() {
-        String expected = "Đội 22";
-        Team team1 = new Team("Đội 21", "1");
+        String expected = "Team2";
+        Team team1 = worldCup.groups.get(5).teams.get(0);
         team1.points = 3;
-        Team team2 = new Team("Đội 22", "2");
+        Team team2 = worldCup.groups.get(5).teams.get(1);
         team2.points = 6;
-        Team team3 = new Team("Đội 23", "3");
+        Team team3 = worldCup.groups.get(5).teams.get(2);
         team3.points = 7;
-        Team team4 = new Team("Đội 24", "4");
-        team4.points = 3;
-
-        Group group = worldCup.groups.get(5);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        Team team4 = worldCup.groups.get(5).teams.get(3);
+        team4.points = 4;
+        assertEquals(expected, worldCup.groups.get(5).getRankedTeams().get(1).name);
     }
 
     // 37
     @Test
     public void testTop1GroupG() {
-        String expected = "Đội 25";
-        Team team1 = new Team("Đội 25", "1");
+        String expected = "Team1";
+        Team team1 = worldCup.groups.get(6).teams.get(0);
         team1.points = 6;
-        Team team2 = new Team("Đội 26", "2");
+        Team team2 = worldCup.groups.get(6).teams.get(1);
         team2.points = 0;
-        Team team3 = new Team("Đội 27", "3");
+        Team team3 = worldCup.groups.get(6).teams.get(2);
         team3.points = 1;
-        Team team4 = new Team("Đội 28", "4");
+        Team team4 = worldCup.groups.get(6).teams.get(3);
         team4.points = 3;
 
-        Group group = worldCup.groups.get(6);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(6).getRankedTeams().get(0).name);
     }
 
     // 38
     @Test
     public void testTop2GroupG() {
-        String expected = "Đội 28";
-        Team team1 = new Team("Đội 25", "1");
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(6).teams.get(0);
         team1.points = 6;
-        Team team2 = new Team("Đội 26", "2");
+        Team team2 = worldCup.groups.get(6).teams.get(1);
         team2.points = 0;
-        Team team3 = new Team("Đội 27", "3");
+        Team team3 = worldCup.groups.get(6).teams.get(2);
         team3.points = 1;
-        Team team4 = new Team("Đội 28", "4");
+        Team team4 = worldCup.groups.get(6).teams.get(3);
         team4.points = 3;
-
-        Group group = worldCup.groups.get(6);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(6).getRankedTeams().get(1).name);
     }
 
     // 39
     @Test
     public void testTop1GroupH() {
-        String expected = "Đội 30";
-        Team team1 = new Team("Đội 29", "1");
+        String expected = "Team2";
+        Team team1 = worldCup.groups.get(7).teams.get(0);
         team1.points = 4;
-        Team team2 = new Team("Đội 30", "2");
+        Team team2 = worldCup.groups.get(7).teams.get(1);
         team2.points = 6;
-        Team team3 = new Team("Đội 31", "3");
+        Team team3 = worldCup.groups.get(7).teams.get(2);
         team3.points = 1;
-        Team team4 = new Team("Đội 32", "4");
+        Team team4 = worldCup.groups.get(7).teams.get(3);
         team4.points = 5;
 
-        Group group = worldCup.groups.get(7);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(0).name);
+        assertEquals(expected, worldCup.groups.get(7).getRankedTeams().get(0).name);
     }
 
     // 40
     @Test
     public void testTop2GroupH() {
-        String expected = "Đội 32";
-        Team team1 = new Team("Đội 29", "1");
+        String expected = "Team4";
+        Team team1 = worldCup.groups.get(7).teams.get(0);
         team1.points = 4;
-        Team team2 = new Team("Đội 30", "2");
+        Team team2 = worldCup.groups.get(7).teams.get(1);
         team2.points = 6;
-        Team team3 = new Team("Đội 31", "3");
+        Team team3 = worldCup.groups.get(7).teams.get(2);
         team3.points = 1;
-        Team team4 = new Team("Đội 32", "4");
+        Team team4 = worldCup.groups.get(7).teams.get(3);
         team4.points = 5;
 
-        Group group = worldCup.groups.get(7);
-        group.teams = new ArrayList<Team>();
-        group.teams.add(team1);
-        group.teams.add(team2);
-        group.teams.add(team3);
-        group.teams.add(team4);
-        assertEquals(expected, group.getRankedTeams().get(1).name);
+        assertEquals(expected, worldCup.groups.get(7).getRankedTeams().get(1).name);
     }
 
     // 41
@@ -814,15 +721,19 @@ public class WorldCupTest {
     // 57 // Kiểm tra thông báo của trận đấu
     // @Test
     // public void testPlayMatch() {
-    //     String expectedMessage = "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.";
-    //     assertEquals(expectedMessage, match.playMatch(), "Trận đấu đã diễn ra giữa Team A và Team B trong 105 phút.");
+    // String expectedMessage = "Trận đấu đã diễn ra giữa Team A và Team B trong 105
+    // phút.";
+    // assertEquals(expectedMessage, match.playMatch(), "Trận đấu đã diễn ra giữa
+    // Team A và Team B trong 105 phút.");
     // }
 
-    @Test 
+    @Test
     public void testPlayMatchTeam3Team4() {
         String expectedMessage = "Trận đấu đã diễn ra giữa Team3 và Team4 trong 105 phút.";
-        assertEquals(expectedMessage, match.playMatch("Team3", "Team4"), "Trận đấu đã diễn ra giữa Team3 và Team4 trong 105 phút.");
+        assertEquals(expectedMessage, match.playMatch("Team3", "Team4"),
+                "Trận đấu đã diễn ra giữa Team3 và Team4 trong 105 phút.");
     }
+
     // 58 // Kiểm tra điểm của đội 1
     @Test
     public void testTeam1Points() {
@@ -1084,16 +995,6 @@ public class WorldCupTest {
     // 92
     // 93
     // 94
-    // @Test
-    // public void testMatchWin() {
-    // Team team1 = new Team(null, null);
-    // Team team2 = new Team(null, null);
-    // match.scoreTeamA = 2;
-    // match.scoreTeamB = 0;
-    // match.playMatch();
-    // assertEquals(3, team1.getPoints());
-    // assertEquals(0, team2.getPoints());
-    // }
     // 95
     // 96
     // 97
