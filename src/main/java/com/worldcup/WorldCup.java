@@ -22,7 +22,7 @@ public class WorldCup {
 
     public void initializeTeams() {
         for (int i = 0; i < 32; i++) {
-            teams.add(new Team("Team " + (i + 1), "Coach" + (i + 1)));
+            teams.add(new Team("Team " + (i + 1)));
         }
         // // Chia đội thành 8 bảng
         // for (int i = 0; i < 8; i++) {
@@ -50,7 +50,7 @@ public class WorldCup {
         }
     }
 
-    public void advanceToKnockoutStage() {
+    public void advanceToKnockoutStage() { 
         for (Group group : groups) {
             List<Team> rankedTeams = group.getRankedTeams();
             knockoutStageTeams.add(rankedTeams.get(0)); // đội đứng đầu

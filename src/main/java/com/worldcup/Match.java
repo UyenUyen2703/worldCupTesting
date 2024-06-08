@@ -50,6 +50,7 @@ public class Match {
     public boolean isDraw() {
         return draw;
     }
+
     public Team getTeamA() {
         return teamA;
     }
@@ -86,7 +87,7 @@ public class Match {
     }
 
     public String getResult() {
-        return winner != null ? winner.getName() + " wins" : "Draw";
+        return winner != null ? winner.getName()+ " wins" : "Draw";
     }
 
     public void playPenaltyShootout() {
@@ -129,7 +130,7 @@ public class Match {
     }
 
     public String playMatch(String TeamA, String TeamB) { // Mô phỏng trận đấu
-        return "Trận đấu đã diễn ra giữa " + TeamA + " và "+ TeamB + " trong "+ totalDuration + " phút.";
+        return "Trận đấu đã diễn ra giữa " + TeamA + " và " + TeamB + " trong " + totalDuration + " phút.";
     }
 
     public void setScore(int scoreTeamA, int scoreTeamB) {
@@ -138,10 +139,15 @@ public class Match {
     }
 
     public String playMatchReturn() { // Mô phỏng trận đấu
-        return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration + " phút.";
-    }
-    public void playExtraTime() {
-        // Implement logic for playing extra time
+        return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration
+                + " phút.";
     }
 
+    public void playExtraTime() {
+
+    }
+
+    public void setWinner(Team winner) {
+        this.winner = winner;
+    }
 }

@@ -21,7 +21,7 @@ public class Region {
         this.southAmerica = new ArrayList<>();
         this.oceania = new ArrayList<>();
         this.europe = new ArrayList<>();
-        this.hostTeam = new Team("Quatar - Host Team", "Coach of Host Team");
+        this.hostTeam = new Team("Quatar - Host Team");
     }
 
     public ArrayList<Team> getAsia() {
@@ -53,55 +53,55 @@ public class Region {
     }
 
     public void addTeamsInAsia() {
-        this.asia.add(new Team("Sourth Korea", ""));
-        this.asia.add(new Team("Saudi Arabia", ""));
-        this.asia.add(new Team("Japan", ""));
-        this.asia.add(new Team("Iran", ""));
-        this.asia.add(new Team("Australia", ""));
-        this.asia.add(new Team("VietNam", ""));
+        this.asia.add(new Team("Sourth Korea"));
+        this.asia.add(new Team("Saudi Arabia"));
+        this.asia.add(new Team("Japan"));
+        this.asia.add(new Team("Iran"));
+        this.asia.add(new Team("Australia"));
+        this.asia.add(new Team("VietNam"));
     }
 
     public void addTeamsInAfrica() {
-        this.africa.add(new Team("Cameroon", ""));
-        this.africa.add(new Team("Ghana", ""));
-        this.africa.add(new Team("Maroc", ""));
-        this.africa.add(new Team("Senegal", ""));
-        this.africa.add(new Team("Tunisia", ""));
+        this.africa.add(new Team("Cameroon"));
+        this.africa.add(new Team("Ghana"));
+        this.africa.add(new Team("Maroc"));
+        this.africa.add(new Team("Senegal"));
+        this.africa.add(new Team("Tunisia"));
     }
 
     public void addTeamsInNorthCentralAmericaAndCaribbean() {
-        this.northCentralAmericaAndCaribbean.add(new Team("Canada", ""));
-        this.northCentralAmericaAndCaribbean.add(new Team("Costa Rica", ""));
-        this.northCentralAmericaAndCaribbean.add(new Team("Mexico", ""));
-        this.northCentralAmericaAndCaribbean.add(new Team("USA", ""));
+        this.northCentralAmericaAndCaribbean.add(new Team("Canada"));
+        this.northCentralAmericaAndCaribbean.add(new Team("Costa Rica"));
+        this.northCentralAmericaAndCaribbean.add(new Team("Mexico"));
+        this.northCentralAmericaAndCaribbean.add(new Team("USA"));
     }
 
     public void addTeamsInSouthAmerica() {
-        this.southAmerica.add(new Team("Argentina", ""));
-        this.southAmerica.add(new Team("Brasil", ""));
-        this.southAmerica.add(new Team("Ecuador", ""));
-        this.southAmerica.add(new Team("Uruguay", ""));
+        this.southAmerica.add(new Team("Argentina"));
+        this.southAmerica.add(new Team("Brasil"));
+        this.southAmerica.add(new Team("Ecuador"));
+        this.southAmerica.add(new Team("Uruguay"));
     }
 
     public void addTeamsInOceania() {
-        this.oceania.add(new Team("New Zealand", ""));
+        this.oceania.add(new Team("New Zealand"));
     }
 
     public void addTeamsInEurope() {
-        this.europe.add(new Team("Belgium", ""));
-        this.europe.add(new Team("Croatia", ""));
-        this.europe.add(new Team("Denmark", ""));
-        this.europe.add(new Team("England", ""));
-        this.europe.add(new Team("France", ""));
-        this.europe.add(new Team("Gremany", ""));
-        this.europe.add(new Team("Netherlands", ""));
+        this.europe.add(new Team("Belgium"));
+        this.europe.add(new Team("Croatia"));
+        this.europe.add(new Team("Denmark"));
+        this.europe.add(new Team("England"));
+        this.europe.add(new Team("France"));
+        this.europe.add(new Team("Gremany"));
+        this.europe.add(new Team("Netherlands"));
 
-        this.europe.add(new Team("Poland", ""));
-        this.europe.add(new Team("Croatia", ""));
-        this.europe.add(new Team("Portugal", ""));
-        this.europe.add(new Team("Serbia", ""));
-        this.europe.add(new Team("Spain", ""));
-        this.europe.add(new Team("Switzerland ", ""));
+        this.europe.add(new Team("Poland"));
+        this.europe.add(new Team("Croatia"));
+        this.europe.add(new Team("Portugal"));
+        this.europe.add(new Team("Serbia"));
+        this.europe.add(new Team("Spain"));
+        this.europe.add(new Team("Switzerland "));
     }
 
     public List<Group> distributeTeamsIntoGroups() {
