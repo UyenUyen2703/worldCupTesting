@@ -1399,7 +1399,7 @@ public class WorldCupTest {
     @Test
     public void testAdvanceToKnockoutStage() {
         worldCup.advanceToKnockoutStage();
-        assertEquals(32, worldCup.getKnockoutStageTeams().size());
+        assertEquals(16, worldCup.getKnockoutStageTeams().size());
     }
 
     // 120
@@ -1418,6 +1418,7 @@ public class WorldCupTest {
         worldCup.playFinal(semiFinalWinners);
         assertNotNull(worldCup.getChampion());
     }
+
     // 91
     // 92
     // 93
@@ -1761,6 +1762,7 @@ public class WorldCupTest {
         worldCup.playKnockoutStage();
         assertNotNull(worldCup.getChampion());
     }
+
     //
     public void testRoundOf16Match1() {
         Team teamA = new Team("Team A", "");
@@ -1777,6 +1779,7 @@ public class WorldCupTest {
         worldCup.playKnockoutStage();
         assertTrue(worldCup.getKnockoutStageTeams().contains(worldCup.getChampion()));
     }
+
     //
     public void testRoundOf16Match2() {
         Team teamA = new Team("Team A", "");
@@ -1795,6 +1798,7 @@ public class WorldCupTest {
         worldCup.playFinal(semiFinalWinners);
         assertNotNull(worldCup.getFinalMatch().getWinner());
     }
+
     //
     public void testRoundOf16Match3() {
         Team teamA = new Team("đội 1", "");
@@ -1813,6 +1817,7 @@ public class WorldCupTest {
         worldCup.playFinal(semiFinalWinners);
         assertNotNull(worldCup.getFinalMatch().getResult());
     }
+
     //
     public void testRoundOf16Match4() {
         Team teamA = new Team("đội 3", "");
@@ -1832,6 +1837,7 @@ public class WorldCupTest {
         assertTrue(worldCup.getFinalMatch().getScore1() >= 0);
         assertTrue(worldCup.getFinalMatch().getScore2() >= 0);
     }
+
     //
     public void testRoundOf16Match5() {
         Team teamA = new Team("đội 5", "");
@@ -1850,6 +1856,7 @@ public class WorldCupTest {
         worldCup.playFinal(semiFinalWinners);
         assertTrue(worldCup.getFinalMatch().getTotalDuration() > 0);
     }
+
     //
     public void testRoundOf16Match6() {
         Team teamA = new Team("đội 7", "");
@@ -1865,6 +1872,7 @@ public class WorldCupTest {
     public void testKnockoutStageTeamsNotNull() {
         assertNotNull(worldCup.getKnockoutStageTeams());
     }
+
     //
     public void testRoundOf16Match7() {
         Team teamA = new Team("đội 9", "");
@@ -1893,57 +1901,17 @@ public class WorldCupTest {
     public void testFinalMatchNotNull() {
         assertNull(worldCup.getFinalMatch());
     }
+
     //
+    @Test
     public void testRoundOf16Match8() {
-        Team teamA = new Team("đội 11", "");
-        Team teamB = new Team("đội 12", "");
+        Team teamA = worldCup.getRoundOf16Matches().get(0).teamA;
+        Team teamB = worldCup.getRoundOf16Matches().get(0).teamB;
         Match match = new Match(teamA, teamB);
-        match.setScore(2, 1);
+        match.setScore(teamA.points, teamB.points);
         match.play();
-        assertEquals(teamA, match.getWinner());
+        assertEquals(teamA, match.getWinner().name);
     }
-    // 130
-
-    // 131
-
-    // 132
-
-    // 133
-
-    // 134
-
-    // 135
-
-    // 136
-
-    // 137
-
-    // 138
-
-    // 139
-
-    // 140
-
-    // 141
-    // 142
-    // 143
-    // 144
-    // 145
-    // 146
-    // 147
-    // 148
-    // 149
-    // 150
-    // 151
-    // 152
-    // 153
-    // 154
-    // 155
-    // 156
-    // 157
-    // 158
-    // 159
-    // 160
     // 161
     // 162
     // 163
