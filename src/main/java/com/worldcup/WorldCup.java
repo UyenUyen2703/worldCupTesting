@@ -95,17 +95,17 @@ public class WorldCup {
 
     public void playKnockoutStage() {
         // Mô phỏng các trận đấu vòng loại trực tiếp
-        List<Team> currentStageTeams = new ArrayList<>(knockoutStageTeams);
-        while (currentStageTeams.size() > 1) {
-            List<Team> nextStageTeams = new ArrayList<Team>();
-            for (int i = 0; i < currentStageTeams.size(); i += 2) {
-                Match match = new Match(currentStageTeams.get(i), currentStageTeams.get(i + 1));
-                match.play();
-                nextStageTeams.add(match.getWinner());
+        List<Team> currentStageTeams = new ArrayList<>(knockoutStageTeams); // Danh sách các đội tham gia vòng loại trực tiếp
+        while (currentStageTeams.size() > 1) { // Trong khi còn hơn 1 đội tham gia
+            List<Team> nextStageTeams = new ArrayList<Team>(); // Danh sách các đội tham gia vòng tiếp theo
+            for (int i = 0; i < currentStageTeams.size(); i += 2) { // i+=2 để chọn ra 2 đội đầu tiên trong danh sách các đội tham gia
+                Match match = new Match(currentStageTeams.get(i), currentStageTeams.get(i + 1)); // Trận đấu giữa đội 1 và đội 2
+                match.play(); // Chơi trận đấu
+                nextStageTeams.add(match.getWinner()); // Thêm đội thắng vào danh sách các đội thắng ở vòng tiếp theo
             }
-            currentStageTeams = nextStageTeams;
+            currentStageTeams = nextStageTeams; // Cập nhật danh sách các đội tham gia vòng loại trực tiếp
         }
-        champion = currentStageTeams.get(0);
+        champion = currentStageTeams.get(0); // Đội thắng cuối cùng là đội vô địch
         // finalMatch = new Match(currentStageTeams.get(0), currentStageTeams.get(1));
     }
 
