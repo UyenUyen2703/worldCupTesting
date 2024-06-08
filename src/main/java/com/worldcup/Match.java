@@ -140,24 +140,8 @@ public class Match {
     public String playMatchReturn() { // Mô phỏng trận đấu
         return "Trận đấu đã diễn ra giữa " + teamA.getName() + " và " + teamB.getName() + " trong " + totalDuration + " phút.";
     }
-    public String playFirstHalf() { // Mô phỏng hiệp 1
-        return "Hiệp 1 đã diễn ra trong " + haftTime + " phút.";
-    }
-
-    public String playSecondHalf() { // Mô phỏng hiệp 2
-        return "Hiệp 2 đã diễn ra trong " + secondHalfDuration + " phút.";
-    }
-
-    public String playHalfTimeBreak() { // Mô phỏng nghỉ giải lao
-        return "Nghỉ giải lao đã diễn ra trong " + halfTimeBreak + " phút.";
-    }
-
-    public String playInjuryTime() { // Mô phỏng bù giờ
-        return "Bù giờ đã diễn ra.";
-    }
-
-    public String playExtraTime() { // Mô phỏng hiệp phụ
-        return "Hiệp phụ đã diễn ra.";
+    public void playExtraTime() {
+        // Implement logic for playing extra time
     }
 
 }
