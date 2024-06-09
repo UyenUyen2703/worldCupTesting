@@ -1,5 +1,7 @@
 package com.worldcup;
 
+import static org.junit.Assert.*;
+
 import java.util.ArrayList;
 
 import org.junit.Before;
@@ -40,6 +42,11 @@ public class GroupTest {
             worldCup.groups.get(j).teams.add(new Team("Team " + (i + 3)));
             worldCup.groups.get(j).teams.add(new Team("Team " + (i + 4)));
         }
+    }
+
+    @Test
+    public void testGroup(){
+        assertEquals(8, worldCup.groups.size());
     }
 
 }
