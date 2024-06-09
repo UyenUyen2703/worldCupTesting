@@ -11,7 +11,7 @@ public class Match {
     public UUID id;
     public int scoreTeamA;
     public int scoreTeamB;
-    public int haftTime; // hiệp 1
+    public int haftTime = 45; // hiệp 1
     public boolean injuryTime; // bù giờ
     public boolean extraTime = true; // hiệp phụ
     public int totalDuration; // tổng thời gian

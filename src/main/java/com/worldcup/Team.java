@@ -15,7 +15,7 @@ public class Team {
         this.name = name;
         this.players = new ArrayList<>();
         this.points = 0; // 9
-        this.matchesPlayed = 3; // 3
+        this.matchesPlayed = 0; // 3
         this.coach = 0;
         this.supportCoach = 0;
     }

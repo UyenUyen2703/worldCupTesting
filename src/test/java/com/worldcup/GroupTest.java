@@ -49,4 +49,26 @@ public class GroupTest {
         assertEquals(8, worldCup.groups.size());
     }
 
+    @Test
+    public void testNumbersTeamsOfGroup() { // kiểm tra số lượng team mỗi group
+        boolean isEnough = true;
+        for (int i = 0; i < worldCup.groups.size(); i++) {
+            if (worldCup.groups.get(i).teams.size() == 4) {
+                continue;
+            } else {
+                isEnough = false;
+                break;
+            }
+        }
+        assertEquals(true, isEnough);
+    }
+
+    @Test
+    public void testPlayMatches() { // kiểm tra chơi trận đấu
+        worldCup.playGroupStage();
+        for (int i = 0; i < worldCup.groups.size(); i++) {
+            worldCup.groups.get(i).playMatches();
+        }
+        assertEquals(6, worldCup.groups.get(0).teams.get(0).getMatchesPlayed());
+    }
 }

@@ -1,5 +1,6 @@
 package com.worldcup;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
@@ -10,7 +11,7 @@ public class Group {
 
     public Group(String name, List<Team> teams) {
         this.name = name;
-        this.teams = teams;
+        this.teams = new ArrayList<>();
     }
 
     public String getName() {
@@ -21,7 +22,7 @@ public class Group {
         return teams;
     }
 
-    public void playMatches() {
+    public void playMatches() { 
         for (int i = 0; i < teams.size(); i++) {
             for (int j = i + 1; j < teams.size(); j++) {
                 Match match = new Match(teams.get(i), teams.get(j));
@@ -31,8 +32,7 @@ public class Group {
     }
 
     public List<Team> getRankedTeams() {
-        teams.sort(Comparator.comparing(Team::getPoints).reversed()); // sort(Comparator.comparing(Team::getPoints).reversed());
-                                                                      // để sắp xếp các đội theo số điểm giảm dần.
+        teams.sort(Comparator.comparing(Team::getPoints).reversed()); // sắp xếp theo điểm
         return teams;
     }
 

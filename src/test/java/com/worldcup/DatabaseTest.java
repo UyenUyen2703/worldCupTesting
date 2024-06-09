@@ -1,11 +1,14 @@
 package com.worldcup;
 
+import static org.junit.Assert.*;
+
 // import static org.junit.Assert.*;
 
 import java.util.ArrayList;
 
 import org.junit.Before;
 // import org.junit.Test;
+import org.junit.Test;
 
 public class DatabaseTest {
     public Region region;
@@ -44,6 +47,45 @@ public class DatabaseTest {
         }
     }
 
+        // 12
+    @Test
+    public void testDatabaseConnection() { // Kiểm tra kết nối database
+        Database db = new Database();
+        assertTrue(db.connect());
+    }
 
+    // 13
+    @Test
+    public void testTeamDataPersistence() { // Kiểm tra dữ liệu đội bóng
+        Database db = new Database();
+        Team team = new Team("Persisted Team");
+        db.saveTeam(team);
+        Team loadedTeam = db.loadTeam("Persisted Team");
+        assertEquals(team.getName(), loadedTeam.getName());
+    }
 
+    @Test
+    public void testMatchResultPersistence() { // Kiểm tra kết quả cuối trận đấu
+        Database db = new Database();
+        Team teamA = worldCup.getTeams().get(0);
+        Team teamB = worldCup.getTeams().get(1);
+        Match match = new Match(teamA, teamB);
+        match.play();
+        db.saveMatchResult(match);
+        Match loadedMatch = db.loadMatchResult(match.getId());
+        assertEquals(match.getResult(), loadedMatch.getResult());
+    }
+
+    // // 14
+    // @Test
+    // public void testMatchDataPersistence() { // Kiểm tra dữ liệu trận đấu
+    //     Database db = new Database();
+    //     Team teamA = new Team("Team A");
+    //     Team teamB = new Team("Team B");
+    //     Match match = new Match(teamA, teamB);
+    //     db.saveMatch(match);
+    //     Match loadedMatch = db.loadMatch(teamA, teamB);
+    //     assertEquals(match.getTeamA().getName(), loadedMatch.getTeamA().getName());
+    //     assertEquals(match.getTeamB().getName(), loadedMatch.getTeamB().getName());
+    // }
 }
