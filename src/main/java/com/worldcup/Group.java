@@ -22,7 +22,7 @@ public class Group {
         return teams;
     }
 
-    public void playMatches() { 
+    public void playMatches() {
         for (int i = 0; i < teams.size(); i++) {
             for (int j = i + 1; j < teams.size(); j++) {
                 Match match = new Match(teams.get(i), teams.get(j));
@@ -32,7 +32,7 @@ public class Group {
     }
 
     public List<Team> getRankedTeams() {
-        teams.sort(Comparator.comparing(Team::getPoints).reversed()); // sắp xếp theo điểm
+        teams.sort(Comparator.comparing(Team::getPoints).reversed());
         return teams;
     }
 

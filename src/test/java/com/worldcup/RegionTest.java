@@ -6,7 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class RegionTest {
-public WorldCup worldCup;
+    public WorldCup worldCup;
     public Region region;
 
     @Before

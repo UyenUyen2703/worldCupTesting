@@ -1,4 +1,5 @@
 package com.worldcup;
+
 import java.util.*;
 
 public class Database {

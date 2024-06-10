@@ -40,12 +40,12 @@ public class GroupTest {
     }
 
     @Test
-    public void testGroup(){
+    public void testGroup() {
         assertEquals(8, worldCup.groups.size());
     }
 
     @Test
-    public void testNumbersTeamsOfGroup() { // kiểm tra số lượng team mỗi group
+    public void testNumbersTeamsOfGroup() {
         boolean isEnough = true;
         for (int i = 0; i < worldCup.groups.size(); i++) {
             if (worldCup.groups.get(i).teams.size() == 4) {
@@ -59,7 +59,7 @@ public class GroupTest {
     }
 
     @Test
-    public void testPlayMatches() { // kiểm tra chơi trận đấu
+    public void testPlayMatches() {
         worldCup.playGroupStage();
         for (int i = 0; i < worldCup.groups.size(); i++) {
             worldCup.groups.get(i).playMatches();

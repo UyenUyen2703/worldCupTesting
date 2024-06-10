@@ -1,6 +1,6 @@
 package com.worldcup;
 
-public enum Card{
+public enum Card {
     YELLOW,
     RED;
 

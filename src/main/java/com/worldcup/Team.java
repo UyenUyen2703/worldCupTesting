@@ -14,8 +14,8 @@ public class Team {
     public Team(String name) {
         this.name = name;
         this.players = new ArrayList<>();
-        this.points = 0; // 9
-        this.matchesPlayed = 0; // 3
+        this.points = 0;
+        this.matchesPlayed = 0;
         this.coach = 0;
         this.supportCoach = 0;
     }
@@ -33,7 +33,7 @@ public class Team {
     }
 
     public void addPoints(int points) {
-        this.points += points; // tính điểm
+        this.points += points;
     }
 
     public int getMatchesPlayed() {
@@ -44,15 +44,18 @@ public class Team {
         this.matchesPlayed++;
     }
 
-    public void addPlayer(Player player) { // Thêm cầu thủ
+    public void addPlayer(Player player) {
         players.add(player);
     }
 
-    public void addSupportCoach(Team supportCoach) {
-        supportCoach.addSupportCoach(supportCoach);
+    public void addSupportCoach() {
+        if (supportCoach >= 3) {
+            throw new IllegalStateException("Cannot add more than 3 support coaches");
+        }
+        supportCoach++;
     }
 
-    public boolean hasForfeited() { // số lượng cầu thủ không đc dưới 7
+    public boolean hasForfeited() {
         return players.stream().filter(p -> !p.isEjected()).count() < 7; // filter(p -> !p.isEjected()).count() < 7;: để
                                                                          // lọc ra những cầu thủ chưa bị đuổi khỏi sân.
                                                                          // stream: để tạo 1 dòng trong dữ liệu
@@ -69,19 +72,15 @@ public class Team {
     }
 
     public void addPointsForLoss() {
-        // Không cần thêm điểm nếu thua
         points += 0;
     }
 
-    // Phương thức cập nhật điểm số của đội sau mỗi trận đấu
     public void updatePoints(int matchResult) {
-        // Cập nhật điểm số dựa trên kết quả của trận đấu
         if (matchResult == 3) {
-            points += 3; // Thắng
+            points += 3;
         } else if (matchResult == 1) {
-            points += 1; // Hòa
+            points += 1;
         }
-        // Điểm không thay đổi nếu thua
     }
 
 }

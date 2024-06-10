@@ -19,14 +19,9 @@ public class DatabaseTest {
     public void setUp() {
         worldCup = new WorldCup();
         worldCup.initializeTeams();
-        worldCup.groups.add(new Group("Group A", null));
-        worldCup.groups.add(new Group("Group B", null));
-        worldCup.groups.add(new Group("Group C", null));
-        worldCup.groups.add(new Group("Group D", null));
-        worldCup.groups.add(new Group("Group E", null));
-        worldCup.groups.add(new Group("Group F", null));
-        worldCup.groups.add(new Group("Group G", null));
-        worldCup.groups.add(new Group("Group H", null));
+        for (int i = 0; i < 8; i++) {
+            worldCup.groups.add(new Group("Group " + (i + 1), null));
+        }
         region = new Region();
         match = new Match(null, null);
         region.addTeamsInAsia();
@@ -47,16 +42,16 @@ public class DatabaseTest {
         }
     }
 
-        // 12
+    // 12
     @Test
-    public void testDatabaseConnection() { // Kiểm tra kết nối database
+    public void testDatabaseConnection() {
         Database db = new Database();
         assertTrue(db.connect());
     }
 
     // 13
     @Test
-    public void testTeamDataPersistence() { // Kiểm tra dữ liệu đội bóng
+    public void testTeamDataPersistence() {
         Database db = new Database();
         Team team = new Team("Persisted Team");
         db.saveTeam(team);
@@ -65,7 +60,7 @@ public class DatabaseTest {
     }
 
     @Test
-    public void testMatchResultPersistence() { // Kiểm tra kết quả cuối trận đấu
+    public void testMatchResultPersistence() {
         Database db = new Database();
         Team teamA = worldCup.getTeams().get(0);
         Team teamB = worldCup.getTeams().get(1);
@@ -79,13 +74,13 @@ public class DatabaseTest {
     // // 14
     // @Test
     // public void testMatchDataPersistence() { // Kiểm tra dữ liệu trận đấu
-    //     Database db = new Database();
-    //     Team teamA = new Team("Team A");
-    //     Team teamB = new Team("Team B");
-    //     Match match = new Match(teamA, teamB);
-    //     db.saveMatch(match);
-    //     Match loadedMatch = db.loadMatch(teamA, teamB);
-    //     assertEquals(match.getTeamA().getName(), loadedMatch.getTeamA().getName());
-    //     assertEquals(match.getTeamB().getName(), loadedMatch.getTeamB().getName());
+    // Database db = new Database();
+    // Team teamA = new Team("Team A");
+    // Team teamB = new Team("Team B");
+    // Match match = new Match(teamA, teamB);
+    // db.saveMatch(match);
+    // Match loadedMatch = db.loadMatch(teamA, teamB);
+    // assertEquals(match.getTeamA().getName(), loadedMatch.getTeamA().getName());
+    // assertEquals(match.getTeamB().getName(), loadedMatch.getTeamB().getName());
     // }
 }

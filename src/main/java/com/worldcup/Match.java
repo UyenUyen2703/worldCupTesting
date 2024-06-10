@@ -11,12 +11,12 @@ public class Match {
     public UUID id;
     public int scoreTeamA;
     public int scoreTeamB;
-    public int haftTime = 45; // hiệp 1
-    public boolean injuryTime; // bù giờ
-    public boolean extraTime; // hiệp phụ
-    public int totalDuration; // tổng thời gian
-    public int secondHalfDuration; // hiệp 2
-    public int halfTimeBreak; // thời gian nghỉ giữa hiệp
+    public int haftTime = 45;
+    public boolean injuryTime;
+    public boolean extraTime;
+    public int totalDuration;
+    public int secondHalfDuration;
+    public int halfTimeBreak;
 
     public Match(Team teamA, Team teamB) {
         this.teamA = teamA;
@@ -25,10 +25,10 @@ public class Match {
         this.scoreTeamA = 0;
         this.scoreTeamB = 0;
         this.extraTime = true;
-        this.haftTime = 45; // 45 phút cho hiệp đầu
-        this.secondHalfDuration = 45; // 45 phút cho hiệp hai
-        this.halfTimeBreak = 15; // 15 phút nghỉ giải lao
-        this.totalDuration = haftTime + secondHalfDuration + halfTimeBreak; // Tổng thời gian 90 phút
+        this.haftTime = 45;
+        this.secondHalfDuration = 45;
+        this.halfTimeBreak = 15;
+        this.totalDuration = haftTime + secondHalfDuration + halfTimeBreak;
     }
 
     public void play() {
@@ -40,7 +40,7 @@ public class Match {
             teamB.addPoints(3);
             winner = teamB;
         }
-        teamA.incrementMatchesPlayed(); // incrementMatchesPlayed() để tăng số trận đã chơi của teamA teamB lên 1.
+        teamA.incrementMatchesPlayed();
         teamB.incrementMatchesPlayed();
     }
 
@@ -115,18 +115,19 @@ public class Match {
     }
 
     public int getFirstHalfDuration() {
-        return 45; // 45 phút cho hiệp đầu
+        return 45;
     }
 
     public int getSecondHalfDuration() {
-        return 45; // 45 phút cho hiệp hai
+        return 45;
     }
 
     public int getHalfTimeBreakDuration() {
-        return halfTimeBreak; // 15 phút nghỉ giải lao
+        return halfTimeBreak;
     }
+
     public int getTotalDuration() {
-        return totalDuration; // Tổng thời gian 90 phút
+        return totalDuration;
     }
 
     public String playMatch(String TeamA, String TeamB) { // Mô phỏng trận đấu
@@ -146,8 +147,7 @@ public class Match {
     public void playExtraTime() {
         if (draw) {
             this.play();
-        }
-        else {
+        } else {
             System.out.println("Trận đấu không hòa, không cần đá hiệp phụ.");
         }
     }

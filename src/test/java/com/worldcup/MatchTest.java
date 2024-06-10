@@ -80,7 +80,6 @@ public class MatchTest {
         }
     }
 
-    // 43
     @Test
     public void testHaveExtraTime() {
         boolean expected = true;
@@ -88,25 +87,21 @@ public class MatchTest {
         assertEquals(expected, actual);
     }
 
-    // 53 // Kiểm tra thời gian của hiệp đầu
     @Test
     public void testFirstHalfDuration() {
         assertEquals("Thời gian của hiệp đầu không đúng", 45, match.getFirstHalfDuration());
     }
 
-    // 54 // Kiểm tra thời gian của hiệp hai
     @Test
     public void testSecondHalfDuration() {
         assertEquals("Thời gian của hiệp hai không đúng", 45, match.getSecondHalfDuration());
     }
 
-    // 55 // Kiểm tra thời gian nghỉ giữa hai hiệp
     @Test
     public void testHalfTimeBreak() {
         assertEquals("Thời gian nghỉ giữa hai hiệp không đúng", 15, match.getHalfTimeBreakDuration());
     }
 
-    // 56 // Kiểm tra tổng thời gian của trận đấu
     @Test
     public void testTotalDuration() {
         assertEquals("Tổng thời gian của trận đấu không đúng", 105, match.getTotalDuration());

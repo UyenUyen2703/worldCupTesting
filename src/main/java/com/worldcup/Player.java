@@ -5,7 +5,6 @@ public class Player {
     public boolean ejected;
     public String position;
 
-
     public Player(String name) {
         this.name = name;
         this.ejected = false;
@@ -21,4 +20,3 @@ public class Player {
         return ejected;
     }
 }
-
