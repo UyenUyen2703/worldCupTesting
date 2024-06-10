@@ -17,6 +17,7 @@ public class MatchTest {
     @Before
     public void setUp() {
         worldCup = new WorldCup();
+        match = new Match(null, null);
         worldCup.initializeTeams();
         // worldCup.playGroupStage();
         worldCup.advanceToKnockoutStage();
@@ -33,10 +34,6 @@ public class MatchTest {
             worldCup.groups.get(j).teams.add(new Team("Team " + (i + 3)));
             worldCup.groups.get(j).teams.add(new Team("Team " + (i + 4)));
         }
-
-        // Chơi vòng bảng và đưa các đội vào vòng knock-out
-        worldCup.playGroupStage();
-        worldCup.advanceToKnockoutStage();
     }
 
     @Test
@@ -47,7 +44,7 @@ public class MatchTest {
     }
 
     @Test
-    public void testPenaltyShootout() { 
+    public void testPenaltyShootout() {
         Team teamA = worldCup.getTeams().get(0);
         Team teamB = worldCup.getTeams().get(1);
         Match match = new Match(teamA, teamB);
@@ -58,8 +55,8 @@ public class MatchTest {
 
     @Test
     public void testExtraTime() {
-        Team teamA = worldCup.getTeams().get(0);
-        Team teamB = worldCup.getTeams().get(1);
+        Team teamA = new Team(worldCup.getTeams().get(0).getName());
+        Team teamB = new Team(worldCup.getTeams().get(1).getName());
         Match match = new Match(teamA, teamB);
         match.setDraw(true);
         match.playExtraTime();
@@ -91,35 +88,34 @@ public class MatchTest {
         assertEquals(expected, actual);
     }
 
-        // 53 // Kiểm tra thời gian của hiệp đầu
-        @Test
-        public void testFirstHalfDuration() {
-            assertEquals("Thời gian của hiệp đầu không đúng", 45, match.getFirstHalfDuration());
-        }
-    
-        // 54 // Kiểm tra thời gian của hiệp hai
-        @Test
-        public void testSecondHalfDuration() {
-            assertEquals("Thời gian của hiệp hai không đúng", 45, match.getSecondHalfDuration());
-        }
-    
-        // 55 // Kiểm tra thời gian nghỉ giữa hai hiệp
-        @Test
-        public void testHalfTimeBreak() {
-            assertEquals("Thời gian nghỉ giữa hai hiệp không đúng", 15, match.getHalfTimeBreakDuration());
-        }
-    
-        // 56 // Kiểm tra tổng thời gian của trận đấu
-        @Test
-        public void testTotalDuration() {
-            assertEquals("Tổng thời gian của trận đấu không đúng", 105, match.getTotalDuration());
-        }
-    
-        @Test
-        public void testPlayMatchTeam3Team4() {
-            String expectedMessage = "Trận đấu đã diễn ra giữa Team 3 và Team 4 trong 105 phút.";
-            assertEquals(expectedMessage, match.playMatch("Team 3", "Team 4"),
-                    "Trận đấu đã diễn ra giữa Team 3 và Team 4 trong 105 phút.");
-        }
-    
+    // 53 // Kiểm tra thời gian của hiệp đầu
+    @Test
+    public void testFirstHalfDuration() {
+        assertEquals("Thời gian của hiệp đầu không đúng", 45, match.getFirstHalfDuration());
+    }
+
+    // 54 // Kiểm tra thời gian của hiệp hai
+    @Test
+    public void testSecondHalfDuration() {
+        assertEquals("Thời gian của hiệp hai không đúng", 45, match.getSecondHalfDuration());
+    }
+
+    // 55 // Kiểm tra thời gian nghỉ giữa hai hiệp
+    @Test
+    public void testHalfTimeBreak() {
+        assertEquals("Thời gian nghỉ giữa hai hiệp không đúng", 15, match.getHalfTimeBreakDuration());
+    }
+
+    // 56 // Kiểm tra tổng thời gian của trận đấu
+    @Test
+    public void testTotalDuration() {
+        assertEquals("Tổng thời gian của trận đấu không đúng", 105, match.getTotalDuration());
+    }
+
+    @Test
+    public void testPlayMatchTeam3Team4() {
+        String expectedMessage = "Trận đấu đã diễn ra giữa Team 3 và Team 4 trong 105 phút.";
+        assertEquals(expectedMessage, match.playMatch("Team 3", "Team 4"),
+                "Trận đấu đã diễn ra giữa Team 3 và Team 4 trong 105 phút.");
+    }
 }

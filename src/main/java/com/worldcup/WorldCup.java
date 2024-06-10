@@ -44,15 +44,15 @@ public class WorldCup {
         return knockoutStageTeams;
     }
 
-    public void playGroupStage() {
+    public void playGroupStage() { 
         for (Group group : groups) {
             group.playMatches();
         }
     }
 
-    public void advanceToKnockoutStage() { 
+    public void advanceToKnockoutStage() { // Lấy danh sách các đội tham gia vòng loại trực tiếp
         for (Group group : groups) {
-            List<Team> rankedTeams = group.getRankedTeams();
+            List<Team> rankedTeams = group.getRankedTeams(); // Lấy danh sách các đội đã xếp hạng trong bảng
             knockoutStageTeams.add(rankedTeams.get(0)); // đội đứng đầu
             knockoutStageTeams.add(rankedTeams.get(1)); // đội đứng thứ hai
         }

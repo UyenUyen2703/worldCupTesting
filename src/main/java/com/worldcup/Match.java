@@ -13,7 +13,7 @@ public class Match {
     public int scoreTeamB;
     public int haftTime = 45; // hiệp 1
     public boolean injuryTime; // bù giờ
-    public boolean extraTime = true; // hiệp phụ
+    public boolean extraTime; // hiệp phụ
     public int totalDuration; // tổng thời gian
     public int secondHalfDuration; // hiệp 2
     public int halfTimeBreak; // thời gian nghỉ giữa hiệp
@@ -24,6 +24,7 @@ public class Match {
         this.id = UUID.randomUUID();
         this.scoreTeamA = 0;
         this.scoreTeamB = 0;
+        this.extraTime = true;
         this.haftTime = 45; // 45 phút cho hiệp đầu
         this.secondHalfDuration = 45; // 45 phút cho hiệp hai
         this.halfTimeBreak = 15; // 15 phút nghỉ giải lao
@@ -124,7 +125,6 @@ public class Match {
     public int getHalfTimeBreakDuration() {
         return halfTimeBreak; // 15 phút nghỉ giải lao
     }
-
     public int getTotalDuration() {
         return totalDuration; // Tổng thời gian 90 phút
     }
@@ -144,7 +144,12 @@ public class Match {
     }
 
     public void playExtraTime() {
-        // Implement logic for playing extra time
+        if (draw) {
+            this.play();
+        }
+        else {
+            System.out.println("Trận đấu không hòa, không cần đá hiệp phụ.");
+        }
     }
 
     public Team setWinner(Team teamA2) {
