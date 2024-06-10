@@ -42,14 +42,12 @@ public class DatabaseTest {
         }
     }
 
-    // 12
     @Test
     public void testDatabaseConnection() {
         Database db = new Database();
         assertTrue(db.connect());
     }
 
-    // 13
     @Test
     public void testTeamDataPersistence() {
         Database db = new Database();
